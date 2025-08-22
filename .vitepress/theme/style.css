@@ -1,0 +1,113 @@
+/* Round the site logo image in header and sidebar */
+:root {
+  --islands-logo-radius: 12px;
+  --islands-radius-md: 10px;
+  --islands-shadow: 0 4px 16px rgba(0,0,0,.06);
+  --islands-shadow-strong: 0 8px 28px rgba(0,0,0,.08);
+  --islands-code-bg: var(--vp-c-bg-soft);
+  --islands-blockquote: var(--vp-c-brand-2);
+  --islands-sidebar-hover: color-mix(in srgb, var(--vp-c-brand-1) 8%, transparent);
+  --islands-sidebar-active: color-mix(in srgb, var(--vp-c-brand-1) 15%, transparent);
+}
+
+.VPNavBar .title .logo,
+.VPNavBar .VPImage.logo,
+.VPSidebar .logo {
+  border-radius: var(--islands-logo-radius);
+  overflow: hidden;
+}
+
+/* Fallback: style all header images that act as logo */
+header .VPImage,
+header .logo {
+  border-radius: var(--islands-logo-radius);
+}
+
+/* Typography & content width */
+.VPDoc .content {
+  line-height: 1.75;
+}
+
+.VPDoc h1, .VPDoc h2, .VPDoc h3 {
+  letter-spacing: 0.2px;
+}
+
+.VPDoc h2 {
+  padding-top: 8px;
+  border-top: 1px solid var(--vp-c-divider);
+  margin-top: 32px;
+}
+
+/* Card-ish sections in docs */
+.VPDoc :where(.info, .tip, .warning, .danger, .details) {
+  border-radius: var(--islands-radius-md);
+  box-shadow: var(--islands-shadow);
+}
+
+/* Code blocks */
+.vp-doc :not(pre) > code {
+  background: var(--islands-code-bg);
+  padding: 0.15em 0.4em;
+  border-radius: 6px;
+}
+
+.vp-code-group, .vp-doc pre, .vp-doc div[class*="language-"] {
+  border-radius: var(--islands-radius-md);
+  box-shadow: var(--islands-shadow);
+}
+
+/* Blockquotes */
+.vp-doc blockquote {
+  border-left: 4px solid var(--islands-blockquote);
+  background: var(--vp-c-bg-soft);
+  padding: 10px 16px;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Nav & footer polish */
+.VPNavBar, .VPLocalNav {
+  box-shadow: var(--islands-shadow);
+}
+
+.VPFooter {
+  box-shadow: var(--islands-shadow-strong) inset 0 1px 0 rgba(0,0,0,0.04);
+}
+
+/* Search input subtle rounding */
+.VPNavBar .search .VPInput input {
+  border-radius: 999px;
+}
+
+/* Sidebar polish */
+.VPSidebar {
+  box-shadow: var(--islands-shadow);
+  background: linear-gradient(180deg, rgba(0,0,0,0.00), rgba(0,0,0,0.02));
+}
+
+.VPSidebar .group .title {
+  font-weight: 700;
+  letter-spacing: .2px;
+}
+
+
+/* Indent first-level items under top group */
+.VPSidebar .group > .items {
+  padding-left: 12px !important;
+}
+
+/* Extra safety: target the first-level links specifically */
+.VPSidebar .group > .items > .VPSidebarItem > .item > .link {
+  margin-left: 2px !important;
+}
+
+/* VitePress v1 structure fallbacks */
+.VPSidebarGroup .items { /* indent any group's immediate children */
+  padding-left: 12px !important;
+}
+.VPSidebar .items > .VPSidebarItem { /* indent first-level items visually */
+  padding-left: 8px !important;
+}
+.VPSidebarItem .items > .VPSidebarItem { /* keep deeper levels consistent */
+  padding-left: 8px;
+}
+
