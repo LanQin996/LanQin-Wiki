@@ -32,7 +32,7 @@ jobs:
           chmod +x node_modules/.bin/vitepress
           # 使用完整路径运行
           ./node_modules/.bin/vitepress build
-          npm install -g 1panel-rocket-cli
+          npm install -g 1panel-rocket-cli-fork
       
       - name: Deploy to 1Panel
         env:
