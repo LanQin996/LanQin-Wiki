@@ -15,13 +15,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'   # 这里改成 npm 缓存
+          cache: 'npm'
       
       - name: Install dependencies
-        run: npm install  # 改成 npm
+        run: npm install
       
       - name: Build
-        run: npm run docs:build  # 同样改成 npm
+        run: npx vitepress build  # ✅ 直接用 npx
       
       - name: Deploy to 1Panel
         env:
