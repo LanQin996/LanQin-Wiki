@@ -21,7 +21,7 @@ jobs:
         run: npm install
       
       - name: Build
-        run: npx vitepress build  # ✅ 直接用 npx
+        run: npm run docs:build  # 使用正确的脚本名称
       
       - name: Deploy to 1Panel
         env:
