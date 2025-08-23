@@ -11,22 +11,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 10
-      
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'pnpm'
+          cache: 'npm'   # 这里改成 npm 缓存
       
       - name: Install dependencies
-        run: pnpm install
+        run: npm install  # 改成 npm
       
       - name: Build
-        run: pnpm run docs:build
+        run: npm run docs:build  # 同样改成 npm
       
       - name: Deploy to 1Panel
         env:
