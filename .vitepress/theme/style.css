@@ -8,6 +8,12 @@
   --islands-blockquote: var(--vp-c-brand-2);
   --islands-sidebar-hover: color-mix(in srgb, var(--vp-c-brand-1) 8%, transparent);
   --islands-sidebar-active: color-mix(in srgb, var(--vp-c-brand-1) 15%, transparent);
+  
+  /* 重置VitePress按钮相关变量 */
+  --vp-c-brand-1: #667eea;
+  --vp-c-brand-2: #764ba2;
+  --vp-c-brand-3: #f093fb;
+  --vp-c-brand-soft: rgba(102, 126, 234, 0.1);
 }
 
 .VPNavBar .title .logo,
@@ -111,3 +117,102 @@ header .logo {
   padding-left: 8px;
 }
 
+/* 主页渐变效果和美化 - 现代化设计 */
+.VPHome {
+  background: 
+    /* 主渐变背景 */
+    linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%),
+    /* 径向渐变装饰 */
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 10% 60%, rgba(255, 255, 255, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 90% 40%, rgba(255, 255, 255, 0.07) 0%, transparent 50%);
+  background-size: 100% 100%, 200% 200%, 300% 300%, 400% 400%, 500% 500%, 600% 600%;
+  background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  animation: gradient-shift 20s ease-in-out infinite;
+}
+
+/* 精致的背景装饰元素 */
+.VPHome::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.15), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.1), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.2), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.1), transparent),
+    radial-gradient(2px 2px at 160px 30px, rgba(255,255,255,0.15), transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: sparkle 20s linear infinite;
+  pointer-events: none;
+}
+
+
+
+.VPHome .VPHomeHero .main {
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* 特性区域美化 */
+.VPHome .VPHomeFeatures {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  margin: 40px auto;
+  max-width: 1200px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 2;
+}
+
+
+
+.VPHome .VPHomeFeatures .item {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.VPHome .VPHomeFeatures .item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.VPHome .VPHomeFeatures .item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+}
+
+.VPHome .VPHomeFeatures .title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.VPHome .VPHomeFeatures .details {
+  color: #6c757d;
+  line-height: 1.6;
+}

@@ -50,6 +50,7 @@ export function buildIslandsSidebar(rootAbs: string): SidebarItem[] {
   const permissionsFile = path.join(rootAbs, 'Islands/Permissions.md')
   const variablesFile = path.join(rootAbs, 'Islands/PAPI_Variables_Reference.md')
   const aboutFile = path.join(rootAbs, 'Islands/About.md')
+  const updateFile = path.join(rootAbs, 'Islands/UpdateLog.md')
 
   // 常见问题（作为可点击的分组标题，避免与唯一子项重名）
   if (fs.existsSync(faqFile)) {
@@ -81,6 +82,11 @@ export function buildIslandsSidebar(rootAbs: string): SidebarItem[] {
   if (fs.existsSync(aboutFile)) {
     const fm = getFrontmatter(aboutFile)
     groups.push({ text: fm.title || '关于', link: '/Islands/About', collapsed: false })
+  }
+  // 更新记录（作为可点击的分组标题，避免与唯一子项重名）
+  if (fs.existsSync(updateFile)) {
+    const fm = getFrontmatter(updateFile)
+    groups.push({ text: fm.title || '更新记录', link: '/Islands/UpdateLog', collapsed: false })
   }
 
   return groups

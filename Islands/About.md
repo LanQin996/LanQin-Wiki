@@ -30,8 +30,4 @@
 - 使用 `/islands help` 查看内置帮助
 - 使用 `/papi list islands` 查看所有变量
 
----
-
-最后更新: 2024年
-
 

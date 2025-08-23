@@ -6,7 +6,7 @@ import { buildIslandsSidebar } from './sidebar.mts'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "蓝钦的文档",
-  // description: "A VitePress Site",
+  description: "专业的 Minecraft 插件开发与使用指南",
   head: [
     ['link', { rel: 'icon', href: '/logo.png' }],
     ['link', { rel: 'shortcut icon', href: '/logo.png' }],

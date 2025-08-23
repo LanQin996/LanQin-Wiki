@@ -1,0 +1,36 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      
+      - name: Install dependencies
+        run: pnpm install
+      
+      - name: Build
+        run: pnpm run docs:build
+      
+      - name: Deploy to 1Panel
+        env:
+          ONEPANEL_BASE_URL: ${{ secrets.ONEPANEL_BASE_URL }}
+          ONEPANEL_API_KEY: ${{ secrets.ONEPANEL_API_KEY }}
+        run: |
+          npx 1panel-rocket-cli -p ./dist -d wiki.jsdu.cn
