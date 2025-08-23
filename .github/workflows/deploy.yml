@@ -32,22 +32,11 @@ jobs:
           chmod +x node_modules/.bin/vitepress
           # 使用完整路径运行
           ./node_modules/.bin/vitepress build
+          npm install -g 1panel-rocket-cli
       
       - name: Deploy to 1Panel
         env:
           ONEPANEL_BASE_URL: ${{ secrets.ONEPANEL_BASE_URL }}
           ONEPANEL_API_KEY: ${{ secrets.ONEPANEL_API_KEY }}
         run: |
-          # 先安装特定版本的 1panel-rocket-cli
-          npm install -g 1panel-rocket-cli@latest
-          
-          # 检查安装是否成功
-          which 1panel-rocket-cli || echo "1panel-rocket-cli not found"
-          
-          # 尝试部署
-          if command -v 1panel-rocket-cli >/dev/null 2>&1; then
-            1panel-rocket-cli -p ./dist -d wiki.jsdu.cn
-          else
-            echo "1panel-rocket-cli not available, trying alternative method"
-            npx --yes 1panel-rocket-cli@latest -p ./dist -d wiki.jsdu.cn
-          fi
+          1panel-rocket-fork -p ./.vitepress/dist -d wiki.jsdu.cn -v v2
