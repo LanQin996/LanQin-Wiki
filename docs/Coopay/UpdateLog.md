@@ -4,7 +4,7 @@
 
 ## 🚀 最新版本
 
-### v1.56 - 2025年9月
+### v1.57 - 2025年9月
 <div class="version-card">
   <div class="version-header">
     <span class="version-tag">稳定版</span>
