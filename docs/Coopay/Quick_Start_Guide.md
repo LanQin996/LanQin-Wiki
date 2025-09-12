@@ -131,21 +131,6 @@ price:
     - "say 感谢 {player_name} 的支持！"
 ```
 
-#### 补偿配置
-```yaml
-Compensation:
-  # 是否启用补偿
-  enabled: true
-  # 补偿金额
-  amount: 100
-  # 补偿条件
-  conditions:
-    - "vip_level >= 1"
-    - "play_time >= 3600"
-```
-
----
-
 ## 🛠️ 管理员指南
 
 ### 安装后检查

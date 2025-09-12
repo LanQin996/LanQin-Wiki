@@ -8,7 +8,7 @@ title: 开始使用
 <div class="start-grid">
 
 <div class="start-card">
-  <h3 class="card-title"><img src="https://cdn.jsdu.cn/opdav/20250912/80fc1e3cb1e7244af801a12d9129fd66.png" alt="CooPay" />CooPay</h3>
+  <h3 class="card-title"><img src="/logo.png" alt="CooPay" />CooPay</h3>
   <p class="card-desc">轻量、易用的经济系统插件文档入口。</p>
   <div class="card-actions">
     <a class="start-chip" href="/docs/Coopay/Quick_Start_Guide">快速开始</a>
