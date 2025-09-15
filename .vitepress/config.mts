@@ -46,6 +46,7 @@ export default defineConfig({
               text: 'XPay监控',
               collapsed: true,
               items: [
+                { text: '☁-支付宝云端', link: '/docs/Coopay/XPay/支付宝云端' },
                 { text: 'Pc-支付宝监控', link: '/docs/Coopay/XPay/个人监控端' },
                 { text: 'Pc-微信个人码监控', link: '/docs/Coopay/XPay/微信个码监控' }
               ]
