@@ -15,6 +15,7 @@ title: 开始使用
     <a class="start-chip" href="/docs/Coopay/Commands_Reference">命令参考</a>
     <a class="start-chip" href="/docs/Coopay/Permissions">权限列表</a>
     <a class="start-chip" href="/docs/Coopay/FAQ">FAQ</a>
+    <a class="start-chip" href="/docs/Coopay/XPay/个人监控端.md">XPay监控</a>
   </div>
   
 </div>
