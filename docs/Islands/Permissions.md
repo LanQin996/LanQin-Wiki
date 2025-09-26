@@ -20,13 +20,13 @@
 | `islands.pickup` | 物品拾取控制 | `true` |
 | `islands.drop` | 物品丢弃控制 | `true` |
 | `islands.expel` | 踢出访客 | `true` |
-| `islands.bypass` | 无视岛屿锁定 | `false` |
 
 ## 管理权限
 
 | 权限节点 | 描述 | 默认值 |
 |----------|------|--------|
 | `islands.reload` | 重载配置 | `op` |
+| `islands.bypass` | 无视岛屿锁定 | `op` |
 
 ---
 
