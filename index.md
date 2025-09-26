@@ -10,6 +10,9 @@ hero:
     - theme: brand
       text: 开始使用
       link: /start
+  # image:
+  #   src: ./logo.png
+  #   alt: 项目 Logo
 features:
   - title: CooPay 文档
     details: 轻量经济系统插件，包含快速开始、命令和权限参考。

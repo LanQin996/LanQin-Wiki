@@ -4,6 +4,24 @@
 
 ## 🚀 最新版本
 
+### v1.0.1 - 2025年9月
+<div class="version-card">
+  <div class="version-header">
+    <span class="version-tag">稳定版</span>
+    <span class="version-date">2025-09-26</span>
+  </div>
+  
+  <div class="version-content">
+    <div class="feature-category">
+      <ul>
+        <li>创建岛屿时自动添加岛屿别名为 `XXX的岛屿`</li>
+        <li>新增`islands.bypass`权限节点可无视岛屿锁定</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+## 📋 历史版本
 ### v1.0.0 - 2025年8月
 <div class="version-card">
   <div class="version-header">
@@ -19,9 +37,6 @@
     </div>
   </div>
 </div>
-
-## 📋 历史版本
-
 <!-- ### v1.0.1 - 2025年8月
 <div class="version-card">
   <div class="version-header">
