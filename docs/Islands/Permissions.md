@@ -20,13 +20,18 @@
 | `islands.pickup` | 物品拾取控制 | `true` |
 | `islands.drop` | 物品丢弃控制 | `true` |
 | `islands.expel` | 踢出访客 | `true` |
-
 ## 管理权限
 
 | 权限节点 | 描述 | 默认值 |
 |----------|------|--------|
 | `islands.reload` | 重载配置 | `op` |
-| `islands.bypass` | 无视岛屿锁定 | `op` |
+| `islands.bypass.visit`| 绕过访问限制，可进入任意岛屿 | `op` |
+| `islands.bypass.break`| 绕过破坏限制，可在任意岛屿破坏方块 | `op` |
+| `islands.bypass.place`| 绕过放置限制，可在任意岛屿放置方块 | `op` |
+| `islands.bypass.interact`| 绕过交互限制，可与任意岛屿的方块/实体交互 | `op` |
+| `islands.bypass.pvp`| 绕过 PVP 限制，可在任意岛屿攻击玩家 | `op` |
+| `islands.bypass.pickup`| 绕过拾取限制，可在任意岛屿拾取掉落物 | `op` |
+| `islands.bypass.drop`| 绕过丢弃限制，可在任意岛屿丢弃物品 | `op` |
 
 ---
 

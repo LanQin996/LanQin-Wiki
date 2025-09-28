@@ -83,16 +83,9 @@ export default defineConfig({
               text: '参考',
               collapsed: false,
               items: [
-                { text: '命令参考', link: '/docs/Islands/Commands_Reference' },
+                { text: '命令参考', link: '/docs/Islands/Commands' },
                 { text: 'PAPI 变量参考', link: '/docs/Islands/PAPI_Variables_Reference' },
                 { text: '权限列表', link: '/docs/Islands/Permissions' }
-              ]
-            },
-            {
-              text: '指南',
-              collapsed: true,
-              items: [
-                { text: 'Islands Wiki', link: '/docs/Islands/Islands_Wiki' }
               ]
             },
             {

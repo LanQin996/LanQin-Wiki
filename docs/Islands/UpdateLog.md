@@ -3,7 +3,26 @@
 <div class="update-timeline">
 
 ## 🚀 最新版本
+### v1.0.2 - 2025年9月
+<div class="version-card">
+  <div class="version-header">
+    <span class="version-tag">稳定版</span>
+    <span class="version-date">2025-09-28</span>
+  </div>
+  
+  <div class="version-content">
+    <div class="feature-category">
+      <ul>
+        <li>细分 `islands.bypass` 权限划分</li>
+        <li>新增团队最大成员</li>
+        <li>新增团队最大成员设置指令</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
+
+## 📋 历史版本
 ### v1.0.1 - 2025年9月
 <div class="version-card">
   <div class="version-header">
@@ -21,7 +40,6 @@
   </div>
 </div>
 
-## 📋 历史版本
 ### v1.0.0 - 2025年8月
 <div class="version-card">
   <div class="version-header">
