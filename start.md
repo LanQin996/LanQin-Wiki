@@ -25,7 +25,7 @@ title: 开始使用
   <p class="card-desc">Skyblock 岛屿玩法插件的完整指南与参考。</p>
   <div class="card-actions">
     <a class="start-chip" href="/docs/Islands/Quick_Start_Guide">快速开始</a>
-    <a class="start-chip" href="/docs/Islands/Commands_Reference">命令参考</a>
+    <a class="start-chip" href="/docs/Islands/Commands">命令参考</a>
     <a class="start-chip" href="/docs/Islands/PAPI_Variables_Reference">PAPI 变量</a>
     <a class="start-chip" href="/docs/Islands/Permissions">权限列表</a>
     <a class="start-chip" href="/docs/Islands/FAQ">FAQ</a>
