@@ -17,7 +17,9 @@ A: 在 `config.yml` 中修改 `Island.WorldDifficulty`。
 
 ## Q: 变量显示为 Invalid Param？
 A: 检查变量名拼写，并用 `/papi list islands` 查看可用变量。
+
 ## Q: 岛屿经济变量显示为 `0`
 A: 未安装`Vault`
+
 ## Q: 岛屿等级变量为 `0`
 A: 玩家未加入团队

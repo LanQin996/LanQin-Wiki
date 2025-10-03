@@ -3,6 +3,41 @@
 <div class="update-timeline">
 
 ## 🚀 最新版本
+### v1.0.4 - 2025年10月
+<div class="version-card">
+  <div class="version-header">
+    <span class="version-tag">稳定版</span>
+    <span class="version-date">2025-10-03</span>
+  </div>
+  
+  <div class="version-content">
+    <div class="feature-category">
+      <ul>
+        <li>修复访客边界显示错误</li>
+        <li>新增 `is visit <玩家ID>`</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+## 📋 历史版本
+
+### v1.0.3 - 2025年10月
+<div class="version-card">
+  <div class="version-header">
+    <span class="version-tag">稳定版</span>
+    <span class="version-date">2025-10-01</span>
+  </div>
+  
+  <div class="version-content">
+    <div class="feature-category">
+      <ul>
+        <li>新增访客权限</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 ### v1.0.2 - 2025年9月
 <div class="version-card">
   <div class="version-header">
@@ -21,8 +56,6 @@
   </div>
 </div>
 
-
-## 📋 历史版本
 ### v1.0.1 - 2025年9月
 <div class="version-card">
   <div class="version-header">
