@@ -3,6 +3,26 @@
 <div class="update-timeline">
 
 ## 🚀 最新版本
+### v1.0.5 - 2025年10月
+<div class="version-card">
+  <div class="version-header">
+    <span class="version-tag">稳定版</span>
+    <span class="version-date">2025-10-09</span>
+  </div>
+  
+  <div class="version-content">
+    <div class="feature-category">
+      <ul>
+        <li>移除多世界强依赖</li>
+        <li>修改为Bukkit原生虚空生成器</li>
+        <li>优化世界删除逻辑</li>
+        <li>新增校验世界删除时禁止创建岛屿</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+## 📋 历史版本
 ### v1.0.4 - 2025年10月
 <div class="version-card">
   <div class="version-header">
@@ -19,8 +39,6 @@
     </div>
   </div>
 </div>
-
-## 📋 历史版本
 
 ### v1.0.3 - 2025年10月
 <div class="version-card">
