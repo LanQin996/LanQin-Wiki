@@ -3,6 +3,25 @@
 <div class="update-timeline">
 
 ## 🚀 最新版本
+### v1.0.6 - 2025年10月
+<div class="version-card">
+  <div class="version-header">
+    <span class="version-tag">稳定版</span>
+    <span class="version-date">2025-10-10</span>
+  </div>
+  
+  <div class="version-content">
+    <div class="feature-category">
+      <ul>
+        <li>修复多世界下创建虚空世界失败</li>
+        <li>修复无多世界情况下服务器重启后无法访问空岛</li>
+        <li>修复无法访问离线玩家岛屿</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+## 📋 历史版本
 ### v1.0.5 - 2025年10月
 <div class="version-card">
   <div class="version-header">
@@ -22,7 +41,6 @@
   </div>
 </div>
 
-## 📋 历史版本
 ### v1.0.4 - 2025年10月
 <div class="version-card">
   <div class="version-header">
