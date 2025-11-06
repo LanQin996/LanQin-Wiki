@@ -28,10 +28,7 @@ jobs:
 
             - name: Build
               run: |
-                  # 确保有执行权限
-                  chmod +x node_modules/.bin/vitepress
-                  # 使用完整路径运行
-                  ./node_modules/.bin/vitepress build
+                  npm run docs:build
                   npm install -g 1panel-rocket-cli-fork
 
             - name: Deploy to 1Panel
