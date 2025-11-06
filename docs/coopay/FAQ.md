@@ -1,4 +1,5 @@
 # CooPay 常见问题（FAQ）
+<update />
 
 ## 安装与配置
 

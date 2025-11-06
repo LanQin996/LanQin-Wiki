@@ -6,6 +6,7 @@ import { inBrowser } from 'vitepress'
 import busuanzi from 'busuanzi.pure.js'
 let homePageStyle: HTMLStyleElement | undefined
 import MyLayout from './MyLayout.vue'
+import update from "./update.vue"
 
 export default {
     extends: DefaultTheme,
@@ -24,6 +25,7 @@ export default {
               busuanzi.fetch()
             }
         }
+        app.component('update' , update)
     },
 }
 function updateHomePageStyle(value: boolean) {

@@ -1,6 +1,12 @@
 import { defineConfig } from 'vitepress'
+import markdownItTaskCheckbox from 'markdown-it-task-checkbox'
 
 export default defineConfig({
+  markdown: {
+    config: (md) => {
+      md.use(markdownItTaskCheckbox) //todo
+    }
+  },
   lastUpdated: true,
   // 纯净模式不显示.html后缀
   cleanUrls:true,
@@ -43,6 +49,7 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' }, 
       { text: '目录', link: '/plugins/' },
+      { text: 'TODO', link: '/todo/' },
     ], 
     socialLinks: [ 
       { icon: 'github', link: 'https://github.com/LanQin996' }, 
@@ -80,9 +87,11 @@ export default defineConfig({
         {
           text: 'Islands',
           items: [
-            { text: 'Index', link: '/config/' },
-            { text: 'Three', link: '/config/three' },
-            { text: 'Four', link: '/config/four' }
+            { text: '快速开始', link: '/islands/' },
+            { text: '权限列表', link: '/islands/Permissions' },
+            { text: '命令列表', link: '/islands/Commands' },
+            { text: '常见问题', link: '/islands/FAQ' },
+            { text: '关于', link: '/islands/About' }
           ],
         },
       ],
