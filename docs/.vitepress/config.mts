@@ -36,6 +36,13 @@ export default defineConfig({
   ],
   appearance:'dark',
   themeConfig: {
+    //导航栏logo
+    logo: '/logo.png',
+    
+    //自定义导航栏标题文本 false为不显示 也可以自定义
+    //siteTitle: 'LanQin_ - Wiki',
+    //siteTitle: 'false',
+
     //本地搜索
     search: { 
       provider: 'local'
