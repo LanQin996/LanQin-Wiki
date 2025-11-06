@@ -1,0 +1,120 @@
+import { defineConfig } from 'vitepress'
+
+export default defineConfig({
+  lastUpdated: true,
+  // 纯净模式不显示.html后缀
+  cleanUrls:true,
+  // 语言
+  lang: 'zh-CN',
+  // 标题
+  title: "蓝钦的文档",
+  // 描述
+  description: "专业的 Minecraft 插件开发与使用指南",
+  // 头部
+  head: [
+    // favicon
+    ['link',{ rel: 'icon', href: '/logo.png'}],
+    [
+      'link',
+      { rel: 'preconnect', href: 'https://fonts.googleapis.com' }
+    ],
+    [
+      'link',
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }
+    ],
+    [
+      'link',
+      { href: 'https://fonts.googleapis.com/css2?family=Roboto&display=swap', rel: 'stylesheet' }
+    ],
+    ['script', { async: '', src: '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js' }]
+  ],
+  appearance:'dark',
+  themeConfig: {
+    //本地搜索
+    search: { 
+      provider: 'local'
+    }, 
+    //页脚
+    footer: {
+      message: '本站总访问量 <span id="busuanzi_value_site_pv"></span> 次  |  本站访客数 <span id="busuanzi_value_site_uv"></span> 人次',
+      copyright: `Copyright © 2025-${new Date().getFullYear()} 备案号：<a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备2024132039号</a>`,
+    },
+    //导航栏
+    nav: [
+      { text: '首页', link: '/' }, 
+      { text: '目录', link: '/plugins/' },
+    ], 
+    socialLinks: [ 
+      { icon: 'github', link: 'https://github.com/LanQin996' }, 
+      // { icon: 'twitter', link: 'https://twitter.com/' }, 
+      // { icon: 'discord', link: 'https://chat.vitejs.dev/' },  
+    ], 
+     //侧边栏
+    sidebar: {
+      '/plugins/': [
+        {
+          text: '插件列表',
+          items: [
+            { text: '简介', link: '/plugins/' }
+          ]
+        }
+      ],
+      // 目录1
+      '/coopay/': [
+        { text: '⬅️ 返回插件列表', link: '/plugins/' },
+        {
+          text: 'CooPay',
+          items: [
+            { text: '快速开始', link: '/coopay/' },
+            { text: '权限列表', link: '/coopay/Permissions' },
+            { text: '命令列表', link: '/coopay/Commands' },
+            { text: '常见问题', link: '/coopay/FAQ' },
+            { text: '关于', link: '/coopay/About' }
+          ],
+        },
+      ],
+
+      // 目录2
+      '/islands/': [
+        { text: '⬅️ 返回插件列表', link: '/plugins/' },
+        {
+          text: 'Islands',
+          items: [
+            { text: 'Index', link: '/config/' },
+            { text: 'Three', link: '/config/three' },
+            { text: 'Four', link: '/config/four' }
+          ],
+        },
+      ],
+      '/savetools/': [
+        { text: '⬅️ 返回插件列表', link: '/plugins/' },
+        {
+          text: 'SaveTools',
+          items: [
+            { text: 'Index', link: '/config/' },
+            { text: 'Three', link: '/config/three' },
+            { text: 'Four', link: '/config/four' }
+          ],
+        },
+      ],
+    },
+    //上次更新时间
+    lastUpdated: {
+      text: '最后更新于',
+      formatOptions: {
+        dateStyle: 'short', // 可选值full、long、medium、short
+        timeStyle: 'medium' // 可选值full、long、medium、short
+      },
+    },
+    docFooter: { 
+      prev: '上一页', 
+      next: '下一页', 
+    }, 
+    outline: { 
+      level: [2,4], // 显示2-4级标题
+      // level: 'deep', // 显示2-6级标题
+      label: '当前页大纲' // 文字显示
+    },
+    returnToTopLabel:'返回顶部', 
+  }
+})

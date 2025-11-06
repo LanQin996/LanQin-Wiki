@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "@types/dom-view-transitions": "^1.0.6",
+    "@types/node": "^24.10.0",
+    "vitepress": "^1.6.4"
+  },
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "dependencies": {
+    "busuanzi.pure.js": "^1.0.3"
+  }
+}
