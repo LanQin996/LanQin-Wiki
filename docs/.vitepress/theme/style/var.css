@@ -53,6 +53,10 @@
   /* 给的值是21，但是实测盖不住，直接999 */
 }
 
+.vp-doc a {
+  text-decoration: none;
+}
+
 /* 也可自行单独修改brand按钮 */
 /* :root {
     --vp-button-brand-border: #F6CEEC;

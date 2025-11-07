@@ -1,8 +1,10 @@
 {
   "devDependencies": {
+    "@mdit-vue/shared": "^3.0.2",
     "@types/dom-view-transitions": "^1.0.6",
     "@types/node": "^24.10.0",
-    "vitepress": "^1.6.4"
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.23"
   },
   "scripts": {
     "docs:dev": "vitepress dev docs",

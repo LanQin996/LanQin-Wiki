@@ -17,9 +17,23 @@ import busuanzi from 'busuanzi.pure.js'
 import ArticleMetadata from "./ArticleMetadata.vue"
 import giscusTalk from 'vitepress-plugin-comment-with-giscus';
 import { useData, useRoute } from 'vitepress';
+import { h } from 'vue'
+import { useData } from 'vitepress'
+import MNavLinks from './components/MNavLinks.vue'
 export default {
     extends: DefaultTheme,
-    Layout: MyLayout,
+    Layout: () => {
+        const props: Record<string, any> = {}
+        // 获取 frontmatter
+        const { frontmatter } = useData()
+    
+        /* 添加自定义 class */
+        if (frontmatter.value?.layoutClass) {
+          props.class = frontmatter.value.layoutClass
+        }
+    
+        return h(MyLayout, props)
+      },
     setup() {
         const route = useRoute();
         const initZoom = () => {
@@ -71,6 +85,7 @@ export default {
         }
         app.component('update', update)
         app.component('ArticleMetadata' , ArticleMetadata)
+        app.component('MNavLinks' , MNavLinks)
         if (inBrowser) {
             NProgress.configure({ showSpinner: false })
             router.onBeforeRouteChange = () => {

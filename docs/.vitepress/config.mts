@@ -55,9 +55,20 @@ export default defineConfig({
     },
 
     //本地搜索
-    search: { 
-      provider: 'local'
-    }, 
+    // search: { 
+    //   provider: 'local'
+    // }, 
+
+    //Algolia搜索
+    search: {
+      provider: 'algolia',
+      options: {
+        appId: '2VMWAI8PWW',
+        apiKey: 'a5e143ce40817c91e0a612386cfae044',
+        indexName: 'doc',
+      },
+    },
+
     //页脚
     footer: {
       message: '本站总访问量 <span id="busuanzi_value_site_pv"></span> 次  |  本站访客数 <span id="busuanzi_value_site_uv"></span> 人次',
@@ -68,6 +79,7 @@ export default defineConfig({
       { text: '首页', link: '/' }, 
       { text: '目录', link: '/plugins/' },
       { text: 'TODO', link: '/todo/' },
+      { text: '友情链接', link: '/nav/' },
     ], 
     socialLinks: [ 
       { icon: 'github', link: 'https://github.com/LanQin996' }, 
