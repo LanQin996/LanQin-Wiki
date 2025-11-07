@@ -1,5 +1,5 @@
 # CooPay 权限概览
-<update />
+
 
 下表为 CooPay 插件主要权限节点及默认值。
 

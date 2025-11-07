@@ -5,6 +5,11 @@ export default defineConfig({
   markdown: {
     config: (md) => {
       md.use(markdownItTaskCheckbox) //todo
+      md.renderer.rules.heading_close = (tokens, idx, options, env, slf) => {
+        let htmlResult = slf.renderToken(tokens, idx, options);
+        if (tokens[idx].tag === 'h1') htmlResult += `<ArticleMetadata />`; 
+        return htmlResult;
+    }
     }
   },
   lastUpdated: true,
@@ -97,6 +102,7 @@ export default defineConfig({
             { text: '快速开始', link: '/islands/' },
             { text: '权限列表', link: '/islands/Permissions' },
             { text: '命令列表', link: '/islands/Commands' },
+            { text: 'Placeholder', link: '/islands/Placeholder' },
             { text: '常见问题', link: '/islands/FAQ' },
             { text: '关于', link: '/islands/About' }
           ],
