@@ -15,6 +15,8 @@ import { useRoute } from 'vitepress';
 import { inBrowser } from 'vitepress'
 import busuanzi from 'busuanzi.pure.js'
 import ArticleMetadata from "./ArticleMetadata.vue"
+import giscusTalk from 'vitepress-plugin-comment-with-giscus';
+import { useData, useRoute } from 'vitepress';
 export default {
     extends: DefaultTheme,
     Layout: MyLayout,
@@ -30,6 +32,27 @@ export default {
         watch(
             () => route.path,
             () => nextTick(() => initZoom())
+        );
+        // Get frontmatter and route
+        const { frontmatter } = useData();
+            
+        // giscus配置
+        giscusTalk({
+        repo: 'LanQin996/LanQin-Wiki', //仓库
+        repoId: 'R_kgDOPiU2lw', //仓库ID
+        category: 'General', // 讨论分类
+        categoryId: 'DIC_kwDOPiU2l84Cxhpr', //讨论分类ID
+        mapping: 'pathname',
+        inputPosition: 'bottom',
+        lang: 'zh-CN',
+        }, 
+        {
+            frontmatter, route
+        },
+        //默认值为true，表示已启用，此参数可以忽略；
+        //如果为false，则表示未启用
+        //您可以使用“comment:true”序言在页面上单独启用它
+        true
         );
     },
     enhanceApp({ app, router }) {

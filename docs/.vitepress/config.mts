@@ -48,6 +48,12 @@ export default defineConfig({
     //siteTitle: 'LanQin_ - Wiki',
     //siteTitle: 'false',
 
+    //编辑本页
+    editLink: { 
+      pattern: 'https://github.com/LanQin996/LanQin-Wiki/edit/master/docs/:path', // 改成自己的仓库
+      text: '在GitHub编辑本页'
+    },
+
     //本地搜索
     search: { 
       provider: 'local'
