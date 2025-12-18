@@ -105,6 +105,7 @@ export default defineConfig({
             { text: '快速开始', link: '/coopay/' },
             { text: '权限列表', link: '/coopay/Permissions' },
             { text: '命令列表', link: '/coopay/Commands' },
+            { text: 'Placeholder', link: '/coopay/Placeholder' },
             { text: '常见问题', link: '/coopay/FAQ' },
             { text: '关于', link: '/coopay/About' }
           ],
