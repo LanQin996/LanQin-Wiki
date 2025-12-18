@@ -1,141 +1,48 @@
 # CooPay 插件快速入门指南
 
-## 🚀 5分钟快速上手
+## 5 分钟完成基础接入
 
-### 第一步：安装依赖插件
-1. **推荐**: 安装 `PlaceholderAPI` 插件（用于PAPI变量支持）
-2. **可选**: 安装 `LuckPerms` 权限管理插件
-3. 重启服务器确保依赖插件正常加载
+### 步骤一：注册 CooPay 平台账户
 
-> ⚠️ **注意**: CooPay 插件不依赖 Vault 经济系统，可以独立运行。
+1. 打开 [CooPay 官网](https://coopay.top/)
+2. 完成实名认证  
+   ![image](https://cdn.jsdu.cn/opdav/20251218/46a83a8ddf97f6b08ed2c8a3214a5f6e.png)  
+   ![image](https://cdn.jsdu.cn/opdav/20251218/3fd87cea7427bd27404d37636432ec46.png)
+3. 在平台中申请并创建服务器  
+   ![image](https://cdn.jsdu.cn/opdav/20251218/c82d91565785b20ebd7edfd85b593a9c.png)
 
-### 第二步：安装CooPay插件
+### 步骤二：安装依赖插件
+
+1. **必须**：安装 `ProtocolLib` 插件（新版本采用地图虚拟发包形式）
+2. **可选**：安装 `PlaceholderAPI` 插件（用于 PAPI 变量支持）
+3. 重启服务器，确认依赖插件均正常加载
+
+> ⚠️ **说明**：CooPay 插件**不依赖** Vault 经济系统，可以独立运行。
+
+### 步骤三：安装 CooPay 插件
+
 1. 下载 `CooPay.jar` 文件
-2. 放入 `plugins` 文件夹
+2. 将 `CooPay.jar` 放入服务器 `plugins` 文件夹
 3. 重启服务器
-4. 检查控制台是否有错误信息
+4. 在控制台中检查是否有报错信息
 
-### 第三步：基础配置
-1. 编辑 `plugins/CooPay/config.yml`
-2. 配置支付平台参数
-3. 设置奖励内容
-4. 执行 `/coopay reload` 重载配置
+### 步骤四：完成基础配置
 
-### 第四步：创建第一个支付订单
-1. 玩家执行 `/cp trade <支付方式> <金额>`
-2. 系统生成支付二维码
-3. 玩家扫码完成支付
-4. 自动发放奖励
+1. 打开并编辑 `plugins/CooPay/config.yml`
+2. 填写/检查支付平台相关参数（如 Key 等）
+3. 配置玩家支付后的奖励内容
+4. 在游戏内执行 `/cp reload`（或 `/coopay reload`）重载配置
 
-**示例**:
+### 步骤五：创建你的第一个支付订单
+
+1. 玩家在游戏内执行 `/cp trade <支付方式> <金额>`
+2. 系统生成支付二维码或支付链接
+3. 玩家扫码或点击链接完成支付
+4. 支付成功后，系统自动发放奖励
+
+**命令示例：**
+
 ```bash
-/cp trade wxpay 100    # 使用微信支付100元
-/cp trade alipay 50    # 使用支付宝支付50元
+/cp trade wx 100    # 使用微信支付 100 元
+/cp trade zfb 50    # 使用支付宝支付 50 元
 ```
-
----
-
-## 📋 常用命令速查
-
-### 基础操作
-| 命令 | 功能 | 权限 |
-|------|------|------|
-| `/cp trade <支付方式> <金额>` | 发起支付 | 无 |
-| `/cp info <订单号>` | 查询订单 | 无 |
-| `/cp cancel` | 取消订单 | 无 |
-| `/cp help` | 查看帮助 | 无 |
-
-### 管理命令
-| 命令 | 功能 | 权限 |
-|------|------|------|
-| `/cp reload` | 重载配置 | `CooPay.admin.reload` |
-| `/cp recovery <玩家名>` | 一键补偿 | `CooPay.admin` |
-
-### 支付方式
-| 支付方式 | 说明 |
-|----------|------|
-| `wxpay` | 微信支付 |
-| `alipay` | 支付宝 |
-
----
-
-## 🎮 使用流程
-
-### 玩家支付流程
-
-##### 1. 发起支付
-```bash
-/cp trade wxpay 100
-```
-- 系统生成支付二维码
-- 显示支付说明
-- 提供扫码支付
-
-##### 2. 完成支付
-- 使用手机扫描二维码
-- 或点击支付链接
-- 选择支付方式完成支付
-
-##### 3. 获得奖励
-- 支付成功后自动发放奖励
-- 系统发送确认消息
-- 奖励内容根据配置执行
-
-### 管理员管理流程
-
-#### 重载配置
-```bash
-/cp reload
-```
-- 重载所有配置文件
-- 更新平台配置
-- 刷新奖励设置
----
-
-## ⚙️ 配置要点
-
-### 重要配置项
-
-#### 支付平台配置
-```yaml
-platform:
-  # 平台选择: cpay 或 xpay
-  type: "cpay"
-  # 混合平台模式配置
-  payment_methods:
-    wxpay: "cpay"    # 微信支付使用 CPAY
-    alipay: "xpay"   # 支付宝使用 XPAY
-  # CPAY 平台配置
-  cpay:
-    pid: 1001
-    key: "your_cpay_key"
-  # XPAY 平台配置
-  xpay:
-    pid: 1001
-    key: "your_xpay_key"
-```
-
-#### 奖励配置
-```yaml
-price:
-  # 是否将金额乘以倍率后强制转为整数
-  money_toInt: false
-  # 倍率
-  magnification: 10.0
-  # 控制台执行的奖励命令
-  commands_console:
-    - "give {player_name} DIAMOND 64"
-    - "say 玩家 {player_name} 充值了 {money} 元"
-  # OP身份执行的奖励命令
-  commands_admin:
-    - "say 感谢 {player_name} 的支持！"
-```
-
-## 🛠️ 管理员指南
-
-### 安装后检查
-1. 检查插件是否正常加载
-2. 测试支付功能
-3. 测试奖励发放
-
----

@@ -4,6 +4,28 @@
 
 ## 🚀 最新版本
 
+### v2.0.3 - 2025年12月
+<div class="version-card">
+  <div class="version-header">
+    <span class="version-tag">稳定版</span>
+    <span class="version-date">2025-12-18</span>
+  </div>
+  
+  <div class="version-content">
+    <div class="feature-category">
+      <h4>V2 新版本</h4>
+      <ul>
+        <li>将V1版本中的CoopayKits内置进插件本体</li>
+        <li>使用虚拟发包功能,更安全的实现手持二维码</li>
+        <li>实现Sqlite+Mysql两种存储模式</li>
+        <li>完善Papi变量,新增排行榜等变量</li>
+        <li>支持平台自定义商品名称</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+## 📋 历史版本
 ### v1.57 - 2025年9月
 <div class="version-card">
   <div class="version-header">
@@ -13,7 +35,7 @@
   
   <div class="version-content">
     <div class="feature-category">
-      <h4>🚀 混合平台支持</h4>
+      <h4>混合平台支持</h4>
       <ul>
         <li>新增多平台支付支持</li>
         <li>支持 CPAY 和 XPAY 两个支付平台</li>
@@ -24,9 +46,6 @@
     </div>
   </div>
 </div>
-
-## 📋 历史版本
-
 <!-- ### v1.0.1 - 2025年8月
 <div class="version-card">
   <div class="version-header">

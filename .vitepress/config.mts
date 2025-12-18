@@ -39,23 +39,23 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { text: '命令参考', link: '/docs/Coopay/Commands_Reference' },
-                { text: '权限列表', link: '/docs/Coopay/Permissions' }
+                { text: 'PAPI 变量参考', link: '/docs/Coopay/PAPI_Variables_Reference' }
               ]
             },
-            {
-              text: 'XPay监控',
-              collapsed: true,
-              items: [
-                { text: '支付宝通道', collapsed: true, items:[
-                  { text: '支付宝-云端', link: '/docs/Coopay/XPay/支付宝云端' },
-                  { text: '支付宝-自挂监控', link: '/docs/Coopay/XPay/个人监控端' },
-                  { text: '支付宝-商家账单', link: '/docs/Coopay/XPay/支付宝商家账单' }
-                ]},
-                { text: '微信通道', collapsed: true, items:[
-                  { text: '微信-自挂监控', link: '/docs/Coopay/XPay/微信个码监控' }
-                ]} 
-              ]
-            },
+            // {
+            //   text: 'XPay监控',
+            //   collapsed: true,
+            //   items: [
+            //     { text: '支付宝通道', collapsed: true, items:[
+            //       { text: '支付宝-云端', link: '/docs/Coopay/XPay/支付宝云端' },
+            //       { text: '支付宝-自挂监控', link: '/docs/Coopay/XPay/个人监控端' },
+            //       { text: '支付宝-商家账单', link: '/docs/Coopay/XPay/支付宝商家账单' }
+            //     ]},
+            //     { text: '微信通道', collapsed: true, items:[
+            //       { text: '微信-自挂监控', link: '/docs/Coopay/XPay/微信个码监控' }
+            //     ]} 
+            //   ]
+            // },
             {
               text: '其他',
               collapsed: true,
