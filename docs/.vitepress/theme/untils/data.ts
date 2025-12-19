@@ -5,6 +5,16 @@ export const NAV_DATA: NavData[] = [
     title: '旗下网站',
     items: [
       {
+        icon: 'https://cdn.jsdu.cn/opdav/20251106/80fc1e3cb1e7244af801a12d9129fd66.png',
+        title: 'CooPay',
+        badge: {
+          text: '强烈推荐',
+          type: 'tip',
+        },
+        desc: '专业的Minecraft服主收款插件',
+        link: 'https://coopay.top/'
+      },
+      {
         icon: 'https://img.wwoyun.cn/uploads/20250825/ebff21a7163c8577c45142e1b32e25f4.png',
         title: 'WwoImg图床',
         badge: {
