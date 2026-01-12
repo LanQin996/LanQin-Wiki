@@ -21,10 +21,10 @@
 | `/islands pvp` | 切换PVP状态 |
 | `/islands pickup` | 切换物品拾取状态 |
 | `/islands drop` | 切换物品丢弃状态 |
-| `/islands visit` | 切换PVP状态 |
 | `/islands difficulty` | 设置岛屿世界的难度 |
 | `/islands time` | 切换岛屿世界的时间 |
 | `/islands weather` | 切换岛屿世界的天气 |
+| `/islands visit` | 访问指定团队的岛屿(需要访客访问权限) |
 
 ### 邀请玩家
 | 命令 | 描述 |
@@ -69,6 +69,10 @@
 ### 管理员
 | 命令 | 描述 |
 |----------|------|
-| `/islands menu` | 菜单 |
-| `/islands menu biome` | 生物群系菜单 |
-| `/islands menu difficulty` | 难度选择菜单 |
+| `/islands admin reload` | 重载配置 |
+| `/islands admin team add <岛主> <玩家>` | 强制将玩家添加进团队(无视人数上限) |
+| `/islands admin team kick <岛主> <玩家>` | 强制踢出团队成员 |
+| `/islands admin team setmax <岛主> <最大成员数>` | 设置团队最大成员数 |
+| `/islands admin team info <玩家>` | 查询玩家的团队信息 |
+| `/islands admin team delete <岛主>` | 强制删除团队及其对应世界 |
+

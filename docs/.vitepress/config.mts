@@ -122,6 +122,7 @@ export default defineConfig({
             { text: '快速开始', link: '/islands/' },
             { text: '权限列表', link: '/islands/Permissions' },
             { text: '命令列表', link: '/islands/Commands' },
+            { text: '配置文件', link: '/islands/Config' },
             { text: 'Placeholder', link: '/islands/Placeholder' },
             { text: '常见问题', link: '/islands/FAQ' },
             { text: '关于', link: '/islands/About' }
