@@ -177,6 +177,58 @@ Permission:
     list: true
     # 设置访客权限
     set: true
+
+  # 岛屿世界限制设置（每个岛屿世界独立限制）
+  WorldLimits:
+    # 单个岛屿世界最大物品掉落物数量（-1表示不限制）
+    MaxItemDrops: -1
+    # 单个岛屿世界最大实体数量（-1表示不限制）
+    MaxEntities: 200
+    # 实体生成黑名单（这些实体不会在岛屿世界生成）
+    EntityBlacklist: []
+#    EntityBlacklist:
+#      - WITHER
+#      - ENDER_DRAGON
+#      - GHAST
+#      - WITHER_SKELETON
+#      - BLAZE
+    # 单个岛屿世界具体实体类型最大生成数量限制（-1表示不限制）
+    EntitySpawnLimits:
+      ZOMBIE: 30        # 最多30只僵尸
+      CREEPER: 10       # 最多10只爬行者
+      SKELETON: 20      # 最多20只骷髅
+      COW: 50          # 最多50只牛
+      PIG: 50          # 最多50只猪
+
+    # 物品使用黑名单（这些物品不能在岛屿世界使用）
+    ItemUseBlacklist: []
+#    ItemUseBlacklist:
+#      - BEDROCK
+#      - END_PORTAL_FRAME
+#      - SPAWNER
+#      - COMMAND_BLOCK
+#      - CHAIN_COMMAND_BLOCK
+#      - REPEATING_COMMAND_BLOCK
+#      - STRUCTURE_BLOCK
+#      - STRUCTURE_VOID
+#      - BARRIER
+
+    # 单个岛屿世界方块放置数量限制（格式：方块名|数量，-1表示不限制，0表示禁止放置）
+    # 注意：此限制基于整个岛屿团队，且只在岛屿边界内生效，边界外无限制
+    BlockPlaceLimits: []
+#    BlockPlaceLimits:
+#      BEDROCK: 0
+#      END_PORTAL_FRAME: 0
+#      SPAWNER: 0
+#      COMMAND_BLOCK: 0
+#      CHAIN_COMMAND_BLOCK: 0
+#      REPEATING_COMMAND_BLOCK: 0
+#      STRUCTURE_BLOCK: 0
+#      STRUCTURE_VOID: 0
+#      BARRIER: 0
+
+    # 是否启用耕地防践踏
+    FarmlandProtection: true
 ```
 :::
 
