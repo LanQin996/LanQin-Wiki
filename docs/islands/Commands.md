@@ -70,6 +70,7 @@
 | 命令 | 描述 |
 |----------|------|
 | `/islands admin reload` | 重载配置 |
+| `/islands admin getitemid` | 获取手中物品的材质ID，用于配置方块放置限制 |
 | `/islands admin team add <岛主> <玩家>` | 强制将玩家添加进团队(无视人数上限) |
 | `/islands admin team kick <岛主> <玩家>` | 强制踢出团队成员 |
 | `/islands admin team setmax <岛主> <最大成员数>` | 设置团队最大成员数 |

@@ -45,6 +45,7 @@
 | 权限节点 | 描述 | 默认值 |
 |----------|------|--------|
 | `islands.admin.reload` | 重载配置 | `op` |
+| `islands.admin.getitemid` | 获取手中物品的材质ID，用于配置方块放置限制 | `op` |
 | `islands.admin.bypass` | 无视岛屿锁定 | `op` |
 | `islands.admin.team.delete` | 管理员强制删除团队及其世界 | `op` |
 | `islands.admin.team.add` | 管理员强制拉人进团队 | `op` |

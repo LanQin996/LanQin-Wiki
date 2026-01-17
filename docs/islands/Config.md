@@ -65,12 +65,12 @@ Island:
       # 添加更多模板...
 
   # 世界边界设置
-  WorldBoard: 64         # 边界半径（从中心到边缘的距离）
-  WarningDistance: 5     # 距离边界多少格开始警告
-  BorderDamage: true     # 是否对超出边界的玩家造成伤害
-  DamageAmount: 2.0      # 每秒造成的伤害值
-  DamageBuffer: 5.0      # 超出边界多少格开始受到伤害
-  ExpandTime: 20         # 边界扩展时间（秒）
+  WorldBoard: 64 # 边界半径（从中心到边缘的距离）
+  WarningDistance: 5 # 距离边界多少格开始警告
+  BorderDamage: true # 是否对超出边界的玩家造成伤害
+  DamageAmount: 2.0 # 每秒造成的伤害值
+  DamageBuffer: 5.0 # 超出边界多少格开始受到伤害
+  ExpandTime: 20 # 边界扩展时间（秒）
   # 创建家园前是否清空背包.
   CreateIslandsClearInv: false
   #是否开启玩家死亡后自动在岛屿世界复活
@@ -108,16 +108,16 @@ Island:
     doFireTick: false
   # 初始生物生成（创建岛屿完成后在出生点生成一个生物）
   InitialMob:
-    Enabled: false         # 是否启用创建时生成初始生物
-    Type: COW              # 生物类型，如 COW/ZOMBIE/VILLAGER/CHICKEN 等
-    CustomName: '§a牛子'         # 自定义名称（留空则不设置）
-    NameVisible: true      # 是否显示名称
+    Enabled: false # 是否启用创建时生成初始生物
+    Type: COW # 生物类型，如 COW/ZOMBIE/VILLAGER/CHICKEN 等
+    CustomName: "§a牛子" # 自定义名称（留空则不设置）
+    NameVisible: true # 是否显示名称
 
   #世界时间同步
   #填写null为不开启同步
   #填写世界名字为同步这个世界的时间
   #注意要同步的世界名字必须比所有玩家时间都先加载，也就是开服即加载
-  WorldTime: 'world'
+  WorldTime: "world"
 
   # 不活跃团队自动清理设置
   InactiveCleanup:
@@ -129,6 +129,80 @@ Island:
     InactiveDaysThreshold: 30
     # 是否同时删除团队的世界
     DeleteWorld: true
+  WorldLimits:
+    # 单个岛屿世界最大物品掉落物数量（-1表示不限制）
+    MaxItemDrops: 500
+    # 单个岛屿世界最大实体数量（-1表示不限制）
+    MaxEntities: 200
+    # 掉落物清理检查间隔（分钟，默认5分钟）
+    ItemCleanupInterval: 5
+    # 物品清理白名单（这些物品不会被自动清理）
+    ItemWhitelist:
+      - DIAMOND  # 钻石
+      - EMERALD  # 绿宝石
+    # 实体清理检查间隔（分钟，默认5分钟）
+    EntityCleanupInterval: 5
+    # 清理消息配置
+    CleanupMessages:
+      # 清理提醒消息
+      Warnings:
+        60: "&f岛屿世界将在1分钟后进行清理"
+        30: "&f岛屿世界将在30秒后进行清理"
+        10: "&f岛屿世界将在10秒后进行清理"
+        0: "&f正在清理"
+      # 清理成功消息格式: %team% 为团队名称, %count% 为清理数量
+      Success:
+        ItemCleanup: "&c清理了%team%团队 %count%个掉落物"
+        EntityCleanup: "&c清理了%team%团队 %count%个实体"
+    # 实体清理白名单（这些实体不会被自动清理）
+    EntityWhitelist:
+      - PLAYER  # 玩家
+      - VILLAGER  # 村民
+    # 实体生成黑名单（这些实体不会在岛屿世界生成）
+    EntityBlacklist: []
+    #    EntityBlacklist:
+    #      - WITHER
+    #      - ENDER_DRAGON
+    #      - GHAST
+    #      - WITHER_SKELETON
+    #      - BLAZE
+    # 单个岛屿世界具体实体类型最大生成数量限制（-1表示不限制）
+    EntitySpawnLimits:
+      ZOMBIE: 30 # 最多30只僵尸
+      CREEPER: 10 # 最多10只爬行者
+      SKELETON: 20 # 最多20只骷髅
+      COW: 50 # 最多50只牛
+      PIG: 50 # 最多50只猪
+
+    # 物品使用黑名单（这些物品不能在岛屿世界使用）
+    ItemUseBlacklist: []
+      #    ItemUseBlacklist:
+      #      - BEDROCK
+      #      - END_PORTAL_FRAME
+      #      - SPAWNER
+      #      - COMMAND_BLOCK
+      #      - CHAIN_COMMAND_BLOCK
+      #      - REPEATING_COMMAND_BLOCK
+      #      - STRUCTURE_BLOCK
+    #      - STRUCTURE_VOID
+    #      - BARRIER
+
+    # 单个岛屿世界方块放置数量限制（格式：方块名|数量，-1表示不限制，0表示禁止放置）
+    # 注意：此限制基于整个岛屿团队，且只在岛屿边界内生效，边界外无限制
+    BlockPlaceLimits: []
+      #    BlockPlaceLimits:
+      #      BEDROCK: 0
+      #      END_PORTAL_FRAME: 0
+      #      SPAWNER: 0
+      #      COMMAND_BLOCK: 0
+      #      CHAIN_COMMAND_BLOCK: 0
+      #      REPEATING_COMMAND_BLOCK: 0
+      #      STRUCTURE_BLOCK: 0
+    #      STRUCTURE_VOID: 0
+    #      BARRIER: 0
+
+    # 是否启用耕地防践踏
+    FarmlandProtection: true
 
 # 控制玩家默认拥有的权限,如果想单独给某位玩家相关权限 请打开 Debug 执行命令查看对应权限节点
 # true为默认拥有
@@ -146,7 +220,7 @@ Permission:
   # 岛屿拥有者删除当前岛屿
   remove: true
   # 踢出当前岛屿世界的访客
-  expel:  true
+  expel: true
   # <开启/关闭> 边界(仅对当前团队成员生效)
   border: true
   # <开启/关闭> Pvp(仅对非当前团队成员生效)
@@ -177,58 +251,6 @@ Permission:
     list: true
     # 设置访客权限
     set: true
-
-  # 岛屿世界限制设置（每个岛屿世界独立限制）
-  WorldLimits:
-    # 单个岛屿世界最大物品掉落物数量（-1表示不限制）
-    MaxItemDrops: -1
-    # 单个岛屿世界最大实体数量（-1表示不限制）
-    MaxEntities: 200
-    # 实体生成黑名单（这些实体不会在岛屿世界生成）
-    EntityBlacklist: []
-#    EntityBlacklist:
-#      - WITHER
-#      - ENDER_DRAGON
-#      - GHAST
-#      - WITHER_SKELETON
-#      - BLAZE
-    # 单个岛屿世界具体实体类型最大生成数量限制（-1表示不限制）
-    EntitySpawnLimits:
-      ZOMBIE: 30        # 最多30只僵尸
-      CREEPER: 10       # 最多10只爬行者
-      SKELETON: 20      # 最多20只骷髅
-      COW: 50          # 最多50只牛
-      PIG: 50          # 最多50只猪
-
-    # 物品使用黑名单（这些物品不能在岛屿世界使用）
-    ItemUseBlacklist: []
-#    ItemUseBlacklist:
-#      - BEDROCK
-#      - END_PORTAL_FRAME
-#      - SPAWNER
-#      - COMMAND_BLOCK
-#      - CHAIN_COMMAND_BLOCK
-#      - REPEATING_COMMAND_BLOCK
-#      - STRUCTURE_BLOCK
-#      - STRUCTURE_VOID
-#      - BARRIER
-
-    # 单个岛屿世界方块放置数量限制（格式：方块名|数量，-1表示不限制，0表示禁止放置）
-    # 注意：此限制基于整个岛屿团队，且只在岛屿边界内生效，边界外无限制
-    BlockPlaceLimits: []
-#    BlockPlaceLimits:
-#      BEDROCK: 0
-#      END_PORTAL_FRAME: 0
-#      SPAWNER: 0
-#      COMMAND_BLOCK: 0
-#      CHAIN_COMMAND_BLOCK: 0
-#      REPEATING_COMMAND_BLOCK: 0
-#      STRUCTURE_BLOCK: 0
-#      STRUCTURE_VOID: 0
-#      BARRIER: 0
-
-    # 是否启用耕地防践踏
-    FarmlandProtection: true
 ```
 :::
 
