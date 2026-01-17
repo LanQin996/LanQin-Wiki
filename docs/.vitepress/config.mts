@@ -14,7 +14,7 @@ export default defineConfig({
   },
   lastUpdated: true,
   // 纯净模式不显示.html后缀
-  cleanUrls:false,
+  cleanUrls: true,
   // 语言
   lang: 'zh-CN',
   // 标题
