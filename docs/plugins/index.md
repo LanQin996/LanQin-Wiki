@@ -27,6 +27,13 @@ layout: page
         <p>一个功能强大的空岛插件</p>
       </div>
     </a>
+    <a class="plugin-card" href="/invbackup/">
+      <img src="https://cdn.jsdu.cn/opdav/20260120/e7c53ed97808aced1a2fc8438c1222f9.png" alt="Islands Logo" class="plugin-logo">
+      <div class="plugin-text-content">
+        <h3>InvBackup</h3>
+        <p>玩家背包备份支持Folia核心以及模组物品</p>
+      </div>
+    </a>
   </div>
 </div>
 

@@ -140,6 +140,19 @@ export default defineConfig({
           ],
         },
       ],
+      '/invbackup/': [
+        { text: '⬅️ 返回插件列表', link: '/plugins/' },
+        {
+          text: 'InvBackup',
+          items: [
+            { text: '快速开始', link: '/invbackup/' },
+            { text: '权限列表', link: '/invbackup/Permissions' },
+            { text: '命令列表', link: '/invbackup/Commands' },
+            { text: '常见问题', link: '/islands/FAQ' },
+            { text: '关于', link: '/islands/About' }
+          ],
+        },
+      ],
     },
     //上次更新时间
     lastUpdated: {
