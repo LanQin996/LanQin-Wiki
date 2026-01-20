@@ -10,8 +10,7 @@
 `islands`可简写为`is`
 :::
 ::: warning 警告
-**注意**: Islands 插件不强依赖任何插件，可以独立运行。<br><br>
-`islands`可简写为`is`
+**注意**: Islands 插件不强依赖任何插件，可以独立运行。
 :::
 
 ### 第一步：安装Islands插件

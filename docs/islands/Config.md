@@ -144,16 +144,17 @@ Island:
     EntityCleanupInterval: 5
     # 清理消息配置
     CleanupMessages:
-      # 清理提醒消息
+      # 清理提醒消息（仅发送给岛屿团队成员）
       Warnings:
-        60: "&f岛屿世界将在1分钟后进行清理"
-        30: "&f岛屿世界将在30秒后进行清理"
-        10: "&f岛屿世界将在10秒后进行清理"
-        0: "&f正在清理"
-      # 清理成功消息格式: %team% 为团队名称, %count% 为清理数量
+        60: "&e⚠ &f你的岛屿将在 &e1分钟 &f后进行自动清理"
+        30: "&e⚠ &f你的岛屿将在 &e30秒 &f后进行自动清理"
+        10: "&e⚠ &f你的岛屿将在 &e10秒 &f后进行自动清理"
+        0: "&a✓ &f正在清理你的岛屿世界..."
+      # 清理成功消息格式（仅发送给岛屿团队成员）
+      # %team% 为团队名称, %count% 为清理数量
       Success:
-        ItemCleanup: "&c清理了%team%团队 %count%个掉落物"
-        EntityCleanup: "&c清理了%team%团队 %count%个实体"
+        ItemCleanup: "&a✓ &f成功清理了 &e%count% &f个掉落物"
+        EntityCleanup: "&a✓ &f成功清理了 &e%count% &f个多余实体"
     # 实体清理白名单（这些实体不会被自动清理）
     EntityWhitelist:
       - PLAYER  # 玩家
@@ -249,8 +250,6 @@ Permission:
     remove: true
     # 查看访客列表
     list: true
-    # 设置访客权限
-    set: true
 ```
 :::
 
@@ -474,19 +473,23 @@ guest:
     success: '&a已成功添加 &e{target} &a为访客！'
     notify: '&a你获得了 &e{owner} &a岛屿的访客权限！'
   remove:
-    usage: '&e用法: /islands guestremove <玩家名>'
+    usage: '&e用法: /islands guestremove <玩家名> [权限...]'
     not-guest: '&c该玩家不是访客！'
     success: '&a已成功移除 &e{target} &a的访客权限！'
     notify: '&c你的 &e{owner} &c岛屿访客权限已被移除！'
+    permissions:
+      success: '&a已成功移除 &e{target} &a的权限: &e{permissions}'
+      notify: '&c你的权限已被 &e{owner} &c移除: &e{permissions}'
+    no-permissions-to-remove: '&c该玩家没有指定的权限可移除！'
   list:
     empty: '&c当前没有访客！'
     header: '&e=== 访客列表 ==='
     item: '&6- &e{guest} &7权限: &f{permissions}'
-  set:
-    usage: '&e用法: /islands guestset <玩家名> <权限类型> <true/false>'
-    not-guest: '&c该玩家不是访客！'
-    invalid-permission: '&c无效的权限类型！可用权限: visit, break, place, interact, pickup, drop, pvp'
-    success: '&a已成功设置 &e{target} &a的 &e{permission} &a权限为 &e{status}'
+  menu:
+    title: '&e&l访客管理 &7({count} 位访客)'
+  permission:
+    title: '&e&l访客权限 &7- {guest}'
+    updated: '&a已{status} &e{guest} &a的 &e{permission}&a！'
 ```
 :::
 

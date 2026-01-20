@@ -44,9 +44,11 @@
 |----------|------|
 | `/islands menu` | 菜单 |
 | `/islands menu biome` | 生物群系菜单 |
+| `/islands menu guest` | 访客管理菜单 |
 | `/islands menu difficulty` | 难度选择菜单 |
 
 ### 访客
+![42f484c50e6ba36ac2986b191202c999](https://cdn.jsdu.cn/opdav/20260121/42f484c50e6ba36ac2986b191202c999.gif)
 ::: tip 提示
 **权限**分别有以下节点<br><br>
 **visit** -> 访问权限<br>
@@ -63,8 +65,7 @@
 |----------|------|
 | `/islands guestlist` | 查看访客列表 |
 | `/islands guestadd <玩家名> [权限...]` | 添加访客权限 |
-| `/islands guestremove <玩家名>` | 移除访客权限 |
-| `/islands guestset <玩家名> <权限类型> <true/false>` | 设置访客权限 |
+| `/islands guestremove <玩家名> [权限...]` | 移除访客权限 |
 
 ### 管理员
 | 命令 | 描述 |

@@ -2,6 +2,9 @@ import { defineConfig } from 'vitepress'
 import markdownItTaskCheckbox from 'markdown-it-task-checkbox'
 
 export default defineConfig({
+  sitemap: {
+    hostname: 'https://wiki.jsdu.cn'
+  },
   markdown: {
     config: (md) => {
       md.use(markdownItTaskCheckbox) //todo
@@ -9,8 +12,13 @@ export default defineConfig({
         let htmlResult = slf.renderToken(tokens, idx, options);
         if (tokens[idx].tag === 'h1') htmlResult += `<ArticleMetadata />`; 
         return htmlResult;
-    }
-    }
+      }
+    },
+    image: {
+      // 开启图片懒加载
+      lazyLoading: true
+    },
+    lineNumbers: true
   },
   lastUpdated: true,
   // 纯净模式不显示.html后缀
@@ -41,6 +49,12 @@ export default defineConfig({
   ],
   appearance:'dark',
   themeConfig: {
+    //手机端深浅模式文字修改
+    darkModeSwitchLabel: '深浅模式', 
+    //侧边栏文字更改(移动端)
+    sidebarMenuLabel:'目录', 
+    //返回顶部文字修改
+    returnToTopLabel:'返回顶部', 
     //导航栏logo
     logo: '/logo.png',
     
@@ -148,8 +162,8 @@ export default defineConfig({
             { text: '快速开始', link: '/invbackup/' },
             { text: '权限列表', link: '/invbackup/Permissions' },
             { text: '命令列表', link: '/invbackup/Commands' },
-            { text: '常见问题', link: '/islands/FAQ' },
-            { text: '关于', link: '/islands/About' }
+            { text: '常见问题', link: '/invbackup/FAQ' },
+            { text: '关于', link: '/invbackup/About' }
           ],
         },
       ],
@@ -171,6 +185,5 @@ export default defineConfig({
       // level: 'deep', // 显示2-6级标题
       label: '当前页大纲' // 文字显示
     },
-    returnToTopLabel:'返回顶部', 
   }
 })
