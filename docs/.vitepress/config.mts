@@ -97,6 +97,7 @@ export default defineConfig({
     ], 
     socialLinks: [ 
       { icon: 'github', link: 'https://github.com/LanQin996' }, 
+      { icon: 'qq', link: 'https://qm.qq.com/q/ki1sVvhIqs' }, 
       // { icon: 'twitter', link: 'https://twitter.com/' }, 
       // { icon: 'discord', link: 'https://chat.vitejs.dev/' },  
     ], 
