@@ -1,8 +1,11 @@
 # CooPay 插件快速入门指南
 
-
+::: tip 提示
+**本插件支持1.7 - 1.21.X**<br>
+支持 `Folia` `Paper` `Spigot` 等主流核心遇到无法使用问题请进群联系管理<br>
+**CooPay专属交流群: [760681627](https://qm.qq.com/q/FdUKx54JvU)**
+:::
 ## 5分钟快速上手
-
 ### 第一步：注册 CooPay 平台账户
 
 1. 打开 [CooPay 官网](https://coopay.top/)
