@@ -7,10 +7,12 @@
 
 | 权限节点 | 描述 | 默认值 |
 |----------|------|--------|
-| 无 | 发起支付 | `true` |
-| 无 | 查询订单 | `true` |
-| 无 | 取消订单 | `true` |
-| 无 | 查看帮助 | `true` |
+| `coopay.trade.<wx&zfb>` | 发起支付 | `true` |
+| `coopay.buy` | 购买礼包 | `true` |
+| `coopay.info` | 查询订单 | `true` |
+| `coopay.list` | 查询订单列表 | `true` |
+| `coopay.cancel` | 取消订单 | `true` |
+| `coopay.help` | 查看帮助 | `true` |
 
 ## 管理权限
 
@@ -18,6 +20,7 @@
 |----------|------|--------|
 | `CooPay.admin` | 一键补偿 | `op` |
 | `CooPay.admin.reload` | 重载配置 | `op` |
+| `CooPay.admin.performance` | 性能统计 | `op` |
 
 ## 安全建议
 
