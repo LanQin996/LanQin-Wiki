@@ -6,8 +6,8 @@
 ## 5分钟快速上手
 
 ::: tip 提示
-**推荐**: 安装 `PlaceholderAPI` `LuckPerms`插件
-`islands`可简写为`is`
+**推荐安装** `PlaceholderAPI` `LuckPerms` `NbtApi` 插件
+<br>`islands`可简写为`is`
 :::
 ::: warning 警告
 **注意**: Islands 插件不强依赖任何插件，可以独立运行。

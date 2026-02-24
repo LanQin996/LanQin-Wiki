@@ -5,7 +5,16 @@
 ::: details 点我查看
 ```bash
 Debug: false
-Version: 1.0.6
+Version: 1.0.14
+# 授权密钥配置
+License:
+  # 授权密钥
+  LicenseKey: ""
+# 假玩家白名单
+# 列表中的玩家名将绕过所有岛屿世界权限限制（破坏、放置、交互等）
+# 用于兼容星辉解离座等假玩家插件
+FakePlayerWhitelist:
+  - "AS-FakePlayer"
 # 岛屿性能排行榜
 Announcement:
   # 是否启用
@@ -69,7 +78,7 @@ Island:
   WarningDistance: 5 # 距离边界多少格开始警告
   BorderDamage: true # 是否对超出边界的玩家造成伤害
   DamageAmount: 2.0 # 每秒造成的伤害值
-  DamageBuffer: 5.0 # 超出边界多少格开始受到伤害
+  DamageBuffer: 1.0 # 超出边界多少格开始受到伤害
   ExpandTime: 20 # 边界扩展时间（秒）
   # 创建家园前是否清空背包.
   CreateIslandsClearInv: false
@@ -185,11 +194,16 @@ Island:
       #      - CHAIN_COMMAND_BLOCK
       #      - REPEATING_COMMAND_BLOCK
       #      - STRUCTURE_BLOCK
-    #      - STRUCTURE_VOID
-    #      - BARRIER
+      #      - STRUCTURE_VOID
+      #      - BARRIER
 
-    # 单个岛屿世界方块放置数量限制（格式：方块名|数量，-1表示不限制，0表示禁止放置）
+    # 单个岛屿世界方块放置数量限制（格式：方块名:数量，-1表示不限制，0表示禁止放置）
     # 注意：此限制基于整个岛屿团队，且只在岛屿边界内生效，边界外无限制
+    # NBT支持（需要安装 NBTAPI）：
+    # 1) 简单关键字包含匹配（推荐）：
+    #    写法：方块名|NBT关键字:数量
+    #    示例：IC2_TE|ic2:water_kinetic_generator: 1
+    # 注意：如果没有安装 NBTAPI，以上 NBT/关键字 模式将不可用，插件启动时会提示
     BlockPlaceLimits: []
       #    BlockPlaceLimits:
       #      BEDROCK: 0
@@ -199,8 +213,11 @@ Island:
       #      CHAIN_COMMAND_BLOCK: 0
       #      REPEATING_COMMAND_BLOCK: 0
       #      STRUCTURE_BLOCK: 0
-    #      STRUCTURE_VOID: 0
-    #      BARRIER: 0
+      #      STRUCTURE_VOID: 0
+      #      BARRIER: 0
+      #      # 关键字示例（需要NBTAPI）：
+      #      # CHEST|cool_loot: 1
+      #      # SPAWNER|minecraft:zombie_horse: 0
 
     # 是否启用耕地防践踏
     FarmlandProtection: true
@@ -505,6 +522,7 @@ guest:
 
 # 默认模板 - 经典空岛
 default:
+  name: "§e§l经典空岛"
   description: "经典空岛模板 - 一个小型的浮空岛屿，适合新手玩家"
   spawn:
     # 出生点坐标（相对于岛屿中心）
@@ -516,6 +534,7 @@ default:
 
 # 空岛模板 - 更大的空岛
 skyblock:
+  name: "§e§l大型空岛"
   description: "大型空岛模板 - 拥有更多资源和空间的浮空岛屿"
   spawn:
     x: 0.5
@@ -526,6 +545,7 @@ skyblock:
 
 # 海洋模板 - 海岛生存
 ocean:
+  name: "§e§l海洋岛屿"
   description: "海洋岛屿模板 - 被海洋环绕的小岛，适合海洋生存"
   spawn:
     x: 0.5
@@ -539,10 +559,13 @@ ocean:
 # ===================================
 # 1. 每个模板的名称（如 default, skyblock, ocean）必须与 templates 目录下的文件夹名称完全一致
 # 2. 模板名称也必须在 config.yml 的 Island.Templates.Available 列表中定义
-# 3. spawn 配置决定了玩家创建岛屿后的初始出生点位置
-# 4. 坐标使用 .5 可以让玩家出生在方块的中心位置，避免卡在方块边缘
-# 5. yaw 和 pitch 控制玩家出生时的视角方向
-# 6. 如果某个模板没有配置 spawn，将使用世界的默认出生点
+# 3. name 字段用于设置模板选择GUI中按钮的显示名称（支持颜色代码，如 §e§l）
+#    如果不配置 name 字段，将使用模板名称作为按钮显示名称
+# 4. description 字段用于设置模板的描述信息，会显示在按钮的Lore中
+# 5. spawn 配置决定了玩家创建岛屿后的初始出生点位置
+# 6. 坐标使用 .5 可以让玩家出生在方块的中心位置，避免卡在方块边缘
+# 7. yaw 和 pitch 控制玩家出生时的视角方向
+# 8. 如果某个模板没有配置 spawn，将使用世界的默认出生点
 
 # ===================================
 # 添加自定义模板示例
@@ -552,6 +575,7 @@ ocean:
 # 3. 在此文件中添加配置：
 #
 # desert:
+#   name: "§e§l沙漠岛屿"
 #   description: "沙漠岛屿模板 - 炎热的沙漠环境"
 #   spawn:
 #     x: 0.5
