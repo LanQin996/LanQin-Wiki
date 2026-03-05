@@ -12,7 +12,6 @@ License:
   LicenseKey: ""
 # 假玩家白名单
 # 列表中的玩家名将绕过所有岛屿世界权限限制（破坏、放置、交互等）
-# 用于兼容星辉解离座等假玩家插件
 FakePlayerWhitelist:
   - "AS-FakePlayer"
 # 岛屿性能排行榜
@@ -59,6 +58,26 @@ Island:
   InviteTimeout: 60
   # 团队最大人数（包含岛主）
   MaxTeamMembers: 5
+  # 主世界名称（留空时自动回退到首个已加载世界）
+  MainWorldName: "world"
+
+  # 岛屿世界目录配置
+  Worlds:
+    # 世界目录：
+    # 1) 空字符串：使用默认世界创建目录
+    #    Directory: ''
+    # 2) 相对路径（基于 默认世界目录）：
+    #    Directory: 'IslandsWorlds'
+    #    Directory: '/IslandsWorlds
+    # 3) 绝对路径（必须位于默认世界创建目录内）：
+    #    Linux:   Directory: '/srv/mc/world/IslandsWorlds'
+    #    Windows: Directory: 'C:/mc/world/IslandsWorlds'
+    Directory: 'IslandsWorlds'
+    Migration:
+      # 是否启用目录迁移逻辑
+      Enabled: true
+      # 是否在插件启动阶段执行批量迁移
+      StartupBatch: true
 
   # 岛屿模板配置
   # 模板为完整的世界文件夹，需要手动放置在 plugins/Islands/templates/ 目录下
@@ -100,11 +119,18 @@ Island:
     - 0
     - 0
     - 0
+    - 0
   PointsNeed:
     - 100
     - 150
     - 200
     - 300
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
   # 岛屿世界困难度
   WorldDifficulty: HARD
   #是否禁用岛屿世界传送门的创建
@@ -267,6 +293,23 @@ Permission:
     remove: true
     # 查看访客列表
     list: true
+  # 传送到公共地狱
+  nether: true
+  # 传送到公共末地
+  end: true
+
+# 公共末地/地狱世界配置（所有团队共用）
+SharedWorld:
+  # 是否启用公共地狱
+  NetherEnabled: true
+  # 公共地狱世界名称
+  NetherWorldName: "islands_shared_nether"
+  # 是否启用公共末地
+  EndEnabled: true
+  # 公共末地世界名称
+  EndWorldName: "islands_shared_end"
+  # 是否允许通过传送门自动进入公共地狱/末地
+  PortalRedirect: true
 ```
 :::
 
@@ -292,10 +335,32 @@ common:
   unknown-command: '&c未知命令: /{label} {args}'
   invalid-number: '&c请输入有效的数字！'
 
+announcement:
+  header: '&6&l----------------- &e&l岛屿世界性能排行榜 &6&l-----------------'
+  footer: '&6&l--------------------------------------------------'
+  empty:
+    online-players: '&7• &f在线玩家: &a{online}&7/&c{max}'
+    mspt: '&7• &fMSPT: {mspt_color}{mspt} ms'
+  single-line: '&e#{rank} &f{world} {perf} &7(区块:{chunks} 实体:{entities} 掉落:{drops}) &7MSPT:{mspt_color}{mspt} ms'
+  multi-line:
+    title: '&e#{rank} &f{world} {perf}'
+    chunks: '  &7• &f加载区块: &a{chunks}'
+    entities: '  &7• &f实体数量: &a{entities}'
+    drops: '  &7• &f掉落物数量: &a{drops}'
+    mspt: '  &7• &fMSPT: {mspt_color}{mspt} ms'
+  performance-tag:
+    high: '&c[高负载]'
+    medium: '&e[中负载]'
+    low: '&a[低负载]'
+    light: '&f[轻负载]'
+
 create:
   success: '&a空岛创建成功！已为你建立团队并设置世界边界。'
   success-with-template: '&a使用模板 ''{template}'' 创建空岛成功！已为你建立团队并设置世界边界。'
   fail: '&c创建空岛时出错: {error}'
+
+border:
+  out-of-bounds: '&c你不能走出岛屿边界范围！'
 
 upgrade:
   already-max: '&c你的岛屿已达到最大等级！'
@@ -507,6 +572,14 @@ guest:
   permission:
     title: '&e&l访客权限 &7- {guest}'
     updated: '&a已{status} &e{guest} &a的 &e{permission}&a！'
+
+shared-world:
+  teleport-nether: '&a已传送到公共地狱世界！'
+  teleport-end: '&a已传送到公共末地世界！'
+  return-overworld: '&a已返回主世界！'
+  nether-disabled: '&c公共地狱功能已被管理员禁用！'
+  end-disabled: '&c公共末地功能已被管理员禁用！'
+  world-load-failed: '&c公共世界加载失败，请联系管理员！'
 ```
 :::
 
