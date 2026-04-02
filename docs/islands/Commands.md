@@ -30,6 +30,7 @@
 | `/islands time` | 切换岛屿世界的时间 |
 | `/islands weather` | 切换岛屿世界的天气 |
 | `/islands visit` | 访问指定团队的岛屿(需要访客访问权限) |
+| `/islands transfer <团队成员>` | 将团队主转让给当前团队成员 |
 
 #### 团队与邀请
 | 命令 | 描述 |
