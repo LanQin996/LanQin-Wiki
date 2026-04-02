@@ -141,6 +141,7 @@ export default defineConfig({
             { text: '配置文件', link: '/islands/Config' },
             { text: 'Placeholder', link: '/islands/Placeholder' },
             { text: '常见问题', link: '/islands/FAQ' },
+            { text: '开发者', link: '/islands/Api' },
             { text: '关于', link: '/islands/About' }
           ],
         },
