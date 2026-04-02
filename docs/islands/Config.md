@@ -75,7 +75,7 @@ Island:
     Directory: 'IslandsWorlds'
     Migration:
       # 是否启用目录迁移逻辑
-      Enabled: true
+      Enabled: false
       # 是否在插件启动阶段执行批量迁移
       StartupBatch: true
 
@@ -101,7 +101,7 @@ Island:
   ExpandTime: 20 # 边界扩展时间（秒）
   # 创建家园前是否清空背包.
   CreateIslandsClearInv: false
-  #是否开启玩家死亡后自动在岛屿世界复活
+  # 是否开启玩家死亡后自动在岛屿世界复活
   EnableAutoReSpawnInHome: false
   # 最大家园可升级的等级
   MaxLevel: 10
@@ -133,7 +133,7 @@ Island:
     - 0
   # 岛屿世界困难度
   WorldDifficulty: HARD
-  #是否禁用岛屿世界传送门的创建
+  # 是否禁用岛屿世界传送门的创建
   DisablePortalCreate: true
   # 所有规则地址: https://bukkit.windit.net/javadoc/org/bukkit/GameRule.html
   WorldSet:
@@ -148,10 +148,10 @@ Island:
     CustomName: "§a牛子" # 自定义名称（留空则不设置）
     NameVisible: true # 是否显示名称
 
-  #世界时间同步
-  #填写null为不开启同步
-  #填写世界名字为同步这个世界的时间
-  #注意要同步的世界名字必须比所有玩家时间都先加载，也就是开服即加载
+  # 世界时间同步
+  # 填写null为不开启同步
+  # 填写世界名字为同步这个世界的时间
+  # 注意要同步的世界名字必须比所有玩家时间都先加载，也就是开服即加载
   WorldTime: "world"
 
   # 不活跃团队自动清理设置
@@ -203,6 +203,7 @@ Island:
     #      - WITHER_SKELETON
     #      - BLAZE
     # 单个岛屿世界具体实体类型最大生成数量限制（-1表示不限制）
+    # 示例：{ "*": 10, COW: 5 }，具体实体配置优先生效
     EntitySpawnLimits:
       ZOMBIE: 30 # 最多30只僵尸
       CREEPER: 10 # 最多10只爬行者
@@ -261,6 +262,8 @@ Permission:
   lock: true
   # 邀请团队成员
   invite: true
+  # 转让团队主给当前团队成员
+  transfer: true
   # 岛屿拥有者删除当前岛屿
   remove: true
   # 踢出当前岛屿世界的访客
@@ -279,10 +282,14 @@ Permission:
   visit: true
   # 时间切换功能（仅在时间同步关闭时可用）
   time: true
+  # 岛屿时间锁定功能
+  timelock: true
   # 天气切换功能
   weather: true
   # 难度调整功能
   difficulty: true
+  # 生物群系切换功能
+  setbiome: true
   # 访客权限管理功能
   guest:
     # 是否启用访客权限功能
@@ -417,6 +424,12 @@ team:
   only-owner: '&c只有岛主才能进行此操作！'
   cannot-kick-self: '&c你不能踢出自己！'
   not-your-member: '&c该玩家不是你的团队成员！'
+  transfer-self: '&c不能把团队主转让给自己！'
+  transfer-target-not-member: '&c玩家 &e{target} &c不是你的团队成员，无法转让团队主！'
+  transfer-success: '&a已成功将团队主转让给 &e{target}&a！'
+  transfer-new-owner-notify: '&a岛主 &e{owner} &a已将团队主转让给你，你现在是新的团队主！'
+  transfer-member-notify: '&e团队主已由 &f{oldOwner} &e转让给 &f{newOwner}&e。'
+  transfer-fail: '&c转让团队主失败，请稍后重试！'
   kicked-notify: '&c你已被岛主 {owner} 踢出团队！'
   island-not-found: '&c找不到你的岛屿世界！'
   not-in-own-world: '&c请先传送到你的岛屿再执行此操作！'
@@ -532,6 +545,15 @@ time:
   switched-to-day: '&a已将岛屿时间切换为 &e白天&a！'
   switched-to-night: '&a已将岛屿时间切换为 &6黑夜&a！'
 
+time-lock:
+  enabled: '&a时间已锁定，当前将保持在 &e{time} &a。'
+  disabled: '&a已解除时间锁定，岛屿恢复正常昼夜循环。'
+  already-locked: '&c当前已经处于时间锁定状态。'
+  not-locked: '&c当前没有生效的时间锁定。'
+  not-owner: '&c只有岛主才能使用时间锁定功能。'
+  not-in-island: '&c请在自己的岛屿世界中执行时间锁定命令。'
+  sync-blocked: '&c已启用全局时间同步，无法使用时间锁定。'
+
 weather:
   switched-to-sunny: '&a已将岛屿天气切换为 &e晴天&a！'
   switched-to-rainy: '&a已将岛屿天气切换为 &9雨天&a！'
@@ -597,6 +619,7 @@ shared-world:
 default:
   name: "§e§l经典空岛"
   description: "经典空岛模板 - 一个小型的浮空岛屿，适合新手玩家"
+  material: "GRASS"
   spawn:
     # 出生点坐标（相对于岛屿中心）
     x: 0.5      # X坐标（.5 表示方块中心）
@@ -609,6 +632,7 @@ default:
 skyblock:
   name: "§e§l大型空岛"
   description: "大型空岛模板 - 拥有更多资源和空间的浮空岛屿"
+  material: "GRASS"
   spawn:
     x: 0.5
     y: 105.0    # 稍高的出生点
@@ -620,6 +644,7 @@ skyblock:
 ocean:
   name: "§e§l海洋岛屿"
   description: "海洋岛屿模板 - 被海洋环绕的小岛，适合海洋生存"
+  material: "WATER_BUCKET"
   spawn:
     x: 0.5
     y: 65.0     # 海平面附近
@@ -635,10 +660,13 @@ ocean:
 # 3. name 字段用于设置模板选择GUI中按钮的显示名称（支持颜色代码，如 §e§l）
 #    如果不配置 name 字段，将使用模板名称作为按钮显示名称
 # 4. description 字段用于设置模板的描述信息，会显示在按钮的Lore中
-# 5. spawn 配置决定了玩家创建岛屿后的初始出生点位置
-# 6. 坐标使用 .5 可以让玩家出生在方块的中心位置，避免卡在方块边缘
-# 7. yaw 和 pitch 控制玩家出生时的视角方向
-# 8. 如果某个模板没有配置 spawn，将使用世界的默认出生点
+# 5. material 字段用于设置模板选择 GUI 中按钮的材质
+#    支持 "WATER_BUCKET" 或 "STAINED_GLASS_PANE:15" 这类写法
+# 6. 如果某个模板没有配置 material，将按模板名称自动推断一个兜底图标
+# 7. spawn 配置决定了玩家创建岛屿后的初始出生点位置
+# 8. 坐标使用 .5 可以让玩家出生在方块的中心位置，避免卡在方块边缘
+# 9. yaw 和 pitch 控制玩家出生时的视角方向
+# 10. 如果某个模板没有配置 spawn，将使用世界的默认出生点
 
 # ===================================
 # 添加自定义模板示例
@@ -650,6 +678,7 @@ ocean:
 # desert:
 #   name: "§e§l沙漠岛屿"
 #   description: "沙漠岛屿模板 - 炎热的沙漠环境"
+#   material: "SAND"
 #   spawn:
 #     x: 0.5
 #     y: 70.0
