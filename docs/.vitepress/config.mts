@@ -155,9 +155,13 @@ export default defineConfig({
         {
           text: 'SaveTools',
           items: [
-            { text: 'Index', link: '/config/' },
-            { text: 'Three', link: '/config/three' },
-            { text: 'Four', link: '/config/four' }
+            { text: '快速开始', link: '/savetools/' },
+            { text: '权限列表', link: '/savetools/Permissions' },
+            { text: '命令列表', link: '/savetools/Commands' },
+            { text: '配置文件', link: '/savetools/Config' },
+            { text: 'Placeholder', link: '/savetools/Placeholder' },
+            { text: '常见问题', link: '/savetools/FAQ' },
+            { text: '关于', link: '/savetools/About' }
           ],
         },
       ],
