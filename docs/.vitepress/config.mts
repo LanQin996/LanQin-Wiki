@@ -1,10 +1,14 @@
 import { defineConfig } from 'vitepress'
 import markdownItTaskCheckbox from 'markdown-it-task-checkbox'
+import llmstxt from 'vitepress-plugin-llms'
 
 export default defineConfig({
   base: '/',
   sitemap: {
     hostname: 'https://wiki.jsdu.cn'
+  },
+  vite: {
+    plugins: [llmstxt()]
   },
   markdown: {
     config: (md) => {

@@ -1,5 +1,161 @@
 # Islands 配置文件
 
+## 重点配置说明
+
+### 授权
+
+| 配置项 | 说明 |
+|----------|------|
+| `License.LicenseKey` | 插件授权密钥。留空时授权检查不会通过。 |
+
+### 数据存储
+
+默认使用本地 YAML 数据。需要多区服或集中管理数据时，可以开启 MySQL。
+
+| 配置项 | 说明 |
+|----------|------|
+| `Mysql.enabled` | 是否启用 MySQL |
+| `Mysql.table-prefix` | 数据表前缀，多个项目共用数据库时建议修改 |
+| `Mysql.multi-server.server-id` | 当前服务器 ID，必须唯一 |
+| `Mysql.multi-server.allow-multi-creation` | 是否允许玩家在多个区服创建岛屿 |
+| `Mysql.multi-server.allow-local-creation` | 是否允许玩家在当前区服创建岛屿 |
+
+多区服传送需要配合 BungeeCord/Velocity 环境。玩家执行 `/islands` 回岛时，如果岛屿属于其他区服，插件会尝试把玩家发送到对应服务器。
+
+### 岛屿世界目录
+
+`Island.Worlds.Directory` 控制岛屿世界保存位置。默认值为 `IslandsWorlds`，表示在主世界目录下创建 `IslandsWorlds` 文件夹。
+
+常见写法：
+
+```yaml
+Island:
+  Worlds:
+    Directory: 'IslandsWorlds'
+```
+
+如果已经有玩家创建过岛屿，不建议直接手动搬目录。需要迁移时再开启：
+
+```yaml
+Island:
+  Worlds:
+    Migration:
+      Enabled: true
+      StartupBatch: true
+```
+
+迁移前请先备份 `teams.yml`、`users.yml` 和岛屿世界文件夹。
+
+### 模板
+
+模板由两部分组成：
+
+| 位置 | 作用 |
+|----------|------|
+| `plugins/Islands/templates/<模板名>` | 实际世界文件夹 |
+| `plugins/Islands/templates.yml` | 模板名称、图标、描述、出生点、生成器 |
+
+`config.yml` 中还需要把模板加入 `Island.Templates.Available`。默认模板由 `Island.Templates.Default` 决定。
+
+海岛模板可以在 `templates.yml` 里加入：
+
+```yaml
+ocean:
+  name: "§e§l海洋岛屿"
+  description: "被海洋环绕的小岛"
+  material: "WATER_BUCKET"
+  generator: "OCEAN"
+  spawn:
+    x: 0.5
+    y: 65.0
+    z: 0.5
+```
+
+### 边界和升级
+
+| 配置项 | 说明 |
+|----------|------|
+| `Island.WorldBoard` | 初始边界半径 |
+| `Island.WarningDistance` | 距离边界多少格开始提醒 |
+| `Island.BorderDamage` | 是否对越界玩家造成伤害 |
+| `Island.MaxLevel` | 岛屿最高等级 |
+| `Island.UpdateRadius` | 每次升级增加的半径 |
+| `Island.MoneyNeed` | 每级升级需要金币，依赖 Vault |
+| `Island.PointsNeed` | 每级升级需要点券，依赖 PlayerPoints |
+
+`MoneyNeed` 和 `PointsNeed` 按等级顺序读取。数组长度最好和 `MaxLevel` 对齐，不收费的等级填 `0`。
+
+### 时间和天气
+
+`Island.WorldTime` 填世界名时，岛屿会同步该世界的时间。此时 `/islands time` 和 `/islands timelock` 不可用。
+
+如果希望每个岛屿自己控制时间：
+
+```yaml
+Island:
+  WorldTime: null
+```
+
+`/islands weather` 只切换当前岛屿世界的晴雨状态，不影响其他岛屿。
+
+### 海岛酸水
+
+`Island.Ocean.AcidWater` 只对 `generator: "OCEAN"` 的海岛世界生效。普通空岛或复制模板岛不会被酸水逻辑影响。
+
+| 配置项 | 说明 |
+|----------|------|
+| `Enabled` | 是否启用酸水 |
+| `IntervalTicks` | 检测间隔，20 tick 为 1 秒 |
+| `BaseDamage` | 基础伤害 |
+| `MaxArmorReduction` | 护甲最多减伤比例 |
+| `DamageMonsters` | 是否伤害敌对怪物 |
+| `Particles.Enabled` | 是否显示酸水粒子 |
+
+### 世界限制
+
+`Island.WorldLimits` 用于控制岛屿世界内的实体、掉落物、黑名单物品和方块放置数量。
+
+| 配置项 | 说明 |
+|----------|------|
+| `MaxItemDrops` | 单个岛屿最大掉落物数量，`-1` 表示不限制 |
+| `MaxEntities` | 单个岛屿最大实体数量，`-1` 表示不限制 |
+| `EntityBlacklist` | 禁止生成的实体 |
+| `EntitySpawnLimits` | 指定实体的生成数量上限 |
+| `ItemUseBlacklist` | 禁止使用的物品 |
+| `BlockPlaceLimits` | 指定方块的放置数量限制 |
+| `FarmlandProtection` | 是否启用耕地保护 |
+
+`BlockPlaceLimits` 支持 `方块名: 数量`。安装 NBTAPI 后，还可以使用 `方块名|NBT关键字: 数量`。
+
+```yaml
+BlockPlaceLimits:
+  BEDROCK: 0
+  SPAWNER: 0
+  IC2_TE|ic2:water_kinetic_generator: 1
+```
+
+数量含义：
+
+| 数量 | 含义 |
+|----------|------|
+| `-1` | 不限制 |
+| `0` | 禁止放置 |
+| 正整数 | 整个团队在边界内最多可放置的数量 |
+
+### 公共地狱和末地
+
+`SharedWorld` 控制全服共享的地狱和末地。
+
+| 配置项 | 说明 |
+|----------|------|
+| `SharedWorld.NetherEnabled` | 是否启用公共地狱 |
+| `SharedWorld.NetherWorldName` | 公共地狱世界名 |
+| `SharedWorld.EndEnabled` | 是否启用公共末地 |
+| `SharedWorld.EndWorldName` | 公共末地世界名 |
+| `SharedWorld.PortalRedirect` | 是否允许传送门自动跳转到公共世界 |
+
+玩家也可以通过 `/islands nether` 和 `/islands end` 进入公共世界。
+
 **config.yml**:
 
 ::: details 点我查看
@@ -181,15 +337,15 @@ Island:
     CleanupMessages:
       # 清理提醒消息（仅发送给岛屿团队成员）
       Warnings:
-        60: "&e⚠ &f你的岛屿将在 &e1分钟 &f后进行自动清理"
-        30: "&e⚠ &f你的岛屿将在 &e30秒 &f后进行自动清理"
-        10: "&e⚠ &f你的岛屿将在 &e10秒 &f后进行自动清理"
-        0: "&a✓ &f正在清理你的岛屿世界..."
+        60: "&e提示 &f你的岛屿将在 &e1分钟 &f后进行自动清理"
+        30: "&e提示 &f你的岛屿将在 &e30秒 &f后进行自动清理"
+        10: "&e提示 &f你的岛屿将在 &e10秒 &f后进行自动清理"
+        0: "&a完成 &f正在清理你的岛屿世界..."
       # 清理成功消息格式（仅发送给岛屿团队成员）
       # %team% 为团队名称, %count% 为清理数量
       Success:
-        ItemCleanup: "&a✓ &f成功清理了 &e%count% &f个掉落物"
-        EntityCleanup: "&a✓ &f成功清理了 &e%count% &f个多余实体"
+        ItemCleanup: "&a完成 &f成功清理了 &e%count% &f个掉落物"
+        EntityCleanup: "&a完成 &f成功清理了 &e%count% &f个多余实体"
     # 实体清理白名单（这些实体不会被自动清理）
     EntityWhitelist:
       - PLAYER  # 玩家

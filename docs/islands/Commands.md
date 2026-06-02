@@ -15,7 +15,7 @@
 #### 岛屿管理
 | 命令 | 描述 |
 |----------|------|
-| `/islands create` | 创建岛屿 |
+| `/islands create [模板名]` | 创建岛屿，不写模板名时使用默认模板 |
 | `/islands upgrade` | 升级当前岛屿边界/等级(消耗经济/点券，按配置检查)|
 | `/islands sethome` | 设置出生点 |
 | `/islands kick <玩家名>` | 踢出成员 |
@@ -26,12 +26,16 @@
 | `/islands pvp` | 切换PVP状态 |
 | `/islands pickup` | 切换物品拾取状态 |
 | `/islands drop` | 切换物品丢弃状态 |
-| `/islands difficulty  [难度]` | 设置岛屿世界的难度 |
-| `/islands time` | 切换岛屿世界的时间 |
-| `/islands weather` | 切换岛屿世界的天气 |
-| `/islands visit` | 访问指定团队的岛屿(需要访客访问权限) |
+| `/islands difficulty [难度]` | 查看或设置岛屿世界难度，支持 `peaceful/easy/normal/hard`、中文或 `0-3` |
+| `/islands time` | 在白天和黑夜之间切换岛屿时间，开启全局时间同步时不可用 |
+| `/islands weather` | 在晴天和雨天之间切换岛屿天气 |
+| `/islands visit <玩家名>` | 访问指定玩家所在团队的岛屿(需要访客访问权限) |
 | `/islands transfer <团队成员>` | 将团队主转让给当前团队成员 |
 | `/islands timelock [toggle|on|off]` | 锁定或解除当前岛屿的时间 |
+| `/islands templates` | 查看所有可用岛屿模板 |
+| `/islands setbiome <生物群系>` | 将当前岛屿世界改为指定生物群系 |
+| `/islands nether` | 传送到公共地狱世界 |
+| `/islands end` | 传送到公共末地世界 |
 
 #### 团队与邀请
 | 命令 | 描述 |
@@ -90,4 +94,27 @@
 | `/islands admin team setmax <岛主> <最大成员数>` | 设置某个岛主团队的最大成员数(含岛主) |
 | `/islands admin team info <玩家>` | 查询该玩家所在团队的详细信息 |
 | `/islands admin team delete <岛主>` | 强制删除指定岛主的团队及其对应岛屿世界 |
+
+## 使用补充
+
+### 创建和模板
+
+`/islands create` 会读取 `Island.Templates.Default` 指定的默认模板。  
+`/islands create ocean` 这类写法会尝试读取 `templates.yml` 里的 `ocean` 配置，并要求 `ocean` 同时存在于 `Island.Templates.Available`。
+
+如果玩家没有岛屿，直接执行 `/islands` 会打开模板选择 GUI；如果已经有岛屿，则会传送回自己的岛屿出生点。
+
+### 时间相关
+
+`/islands time` 和 `/islands timelock` 都要求玩家在自己的岛屿世界内执行。  
+当 `config.yml` 中的 `Island.WorldTime` 填写了世界名时，岛屿时间会同步该世界，此时这两个命令会被拦截。要使用岛屿独立时间，请把 `Island.WorldTime` 改为 `null`。
+
+### 访客访问
+
+`/islands visit <玩家名>` 访问的是目标玩家所在团队的岛屿。目标团队如果锁岛，普通玩家需要拥有该团队给予的 `visit` 访客权限；拥有 `islands.bypass.visit` 的管理员不受此限制。
+
+### 公共地狱和末地
+
+公共地狱、公共末地由 `SharedWorld` 配置控制。  
+`/islands nether` 和 `/islands end` 使用的是全服共享世界，不会给每个团队单独生成地狱或末地。
 

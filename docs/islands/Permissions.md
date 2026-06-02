@@ -3,6 +3,11 @@
 
 下表为 Islands 插件主要权限节点及默认值。
 
+::: tip 提示
+`config.yml` 的 `Permission` 节控制普通玩家是否默认拥有某个功能。  
+如果对应配置为 `false`，玩家仍然可以通过 LuckPerms 等权限插件获得下面的权限节点。
+:::
+
 ## 基础命令权限
 
 | 权限节点 | 描述 | 默认值 |
@@ -21,13 +26,17 @@
 | `islands.expel` | 踢出访客 | `true` |
 | `islands.upgrade` | 升级当前岛屿的边界范围 | `true` |
 | `islands.visit` | 访问指定团队的岛屿(需要访客访问权限) | `true` |
-| `islands.time` | 切换岛屿世界的时间(白天/黑夜) | `false` |
-| `islands.weather` | 切换岛屿世界的天气(晴天/雨天) | `false` |
+| `islands.time` | 切换岛屿世界的时间(白天/黑夜) | `true` |
+| `islands.timelock` | 锁定或解除岛屿时间 | `true` |
+| `islands.weather` | 切换岛屿世界的天气(晴天/雨天) | `true` |
 | `islands.templates` | 查看所有可用的岛屿模板 | `false` |
-| `islands.difficulty` | 设置岛屿世界的难度（和平/简单/普通/困难） | `false` |
+| `islands.difficulty` | 设置岛屿世界的难度（和平/简单/普通/困难） | `true` |
+| `islands.setbiome` | 修改当前岛屿世界生物群系 | `true` |
 | `islands.guest.add` | 添加访客权限 | `true` |
 | `islands.guest.list` | 查看访客列表 | `true` |
 | `islands.guest.remove` | 移除访客权限 | `true` |
+| `islands.nether` | 传送到公共地狱世界 | `true` |
+| `islands.end` | 传送到公共末地世界 | `true` |
 
 ## 管理权限
 
@@ -50,6 +59,15 @@
 |权限节点|描述|默认值|
 |----------|------|--------|
 | `islands.biomes.{生物群系名称}` | 给予更改对应名称生物群系权限 | `false` | 
+
+示例：
+
+```bash
+lp group vip permission set islands.biomes.plains true
+lp group vip permission set islands.biomes.desert true
+```
+
+`/islands setbiome <生物群系>` 需要同时满足两类权限：玩家能使用 `setbiome` 功能，并且拥有目标生物群系对应的 `islands.biomes.<名称>` 权限。
 
 ## 详细权限
 | 权限节点 | 描述 | 默认值 |
